@@ -35,7 +35,7 @@ en:
       long: %B "%d  %Y"
       short: %B "%d"
     month_names:
-      - 
+      -
       - January
       - February
       - March
@@ -176,34 +176,3 @@ en:
           byte:
             one: Byte
             other: Bytes
-          gb: GB
-          kb: KB
-          mb: MB
-          tb: TB
-    percentage:
-      format:
-        delimiter: "."
-    precision:
-      format:
-        delimiter: "."
-  support:
-    array:
-      last_word_connector: " e "
-      two_words_connector: " e "
-      words_connector: ", "
-  time:
-    am: am
-    formats:
-      simple: "%m/%d/%Y, %H:%M h"
-      default: "%A, %d de %B de %Y, %H:%M h"
-      long: "%A, %d de %B de %Y, %H:%M h"
-      short: "%m/%d, %H:%M h"
-      updates: "%d %b %Y"
-    pm: pm
-  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
-    activemodel:
-      errors:
-        <<: *errors
-    activerecord:
-      errors:
-        <<: *errors

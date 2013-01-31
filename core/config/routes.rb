@@ -1,6 +1,6 @@
 require 'sidekiq/web'
 
-Catarse::Application.routes.draw do
+Catarse::Core::Engine.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations", :passwords => "passwords"} do
     get "/login" => "devise/sessions#new"
   end
