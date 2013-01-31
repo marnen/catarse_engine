@@ -8,7 +8,6 @@ module Catarse
       config.after_initialize do
         Rails.application.routes_reloader.reload!
       end
-
     end
   end
 end

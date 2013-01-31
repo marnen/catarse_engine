@@ -1,7 +1,8 @@
 require 'sidekiq/web'
 
 Catarse::Core::Engine.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations", :passwords => "passwords"} do
+  devise_for :users, class_name: "Catarse::User",
+    :controllers => {:registrations => "registrations", :passwords => "passwords"} do
     get "/login" => "devise/sessions#new"
   end
 
@@ -17,8 +18,8 @@ Catarse::Core::Engine.routes.draw do
     resources :emails, :only => [ :index ]
   end
 
-  mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
-  mount CatarseMoip::Engine => "/", :as => "catarse_moip"
+  #mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
+  #mount CatarseMoip::Engine => "/", :as => "catarse_moip"
 
   filter :locale
 

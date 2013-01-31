@@ -5,7 +5,7 @@ begin
     :port           => '587',
     :authentication => :plain,
     :user_name      => 'catarse',
-    :password       =>  Configuration[:sendgrid],
+    :password       =>  Catarse::Configuration[:sendgrid],
     :domain         => 'heroku.com'
     }
     ActionMailer::Base.delivery_method = :smtp

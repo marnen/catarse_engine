@@ -4,3 +4,4 @@ module Catarse
 end
 
 require 'catarse/core/engine'
+require 'catarse/core/table_prefix'

@@ -6,7 +6,7 @@ Catarse::Core::Engine.config.middleware.use OmniAuth::Builder do
 
   provider :open_id, :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id'
   begin
-    OauthProvider.all.each do |p|
+    Catarse::OauthProvider.all.each do |p|
       # This hack can be removed after the upgrade to omniauth 2.0
       # Where every provider will accept the options hash
       unless p.scope.nil?
