@@ -4,7 +4,7 @@ class PaymentStreamController < ApplicationController
 
   def thank_you
     unless session[:thank_you_id]
-      flash[:failure] = I18n.t('payment_stream.thank_you.error')
+      flash[:failure] = I18n.t('catarse.payment_stream.thank_you.error')
       return redirect_to :root
     end
 
@@ -13,7 +13,7 @@ class PaymentStreamController < ApplicationController
       session[:_payment_token] = nil
     end
     @project = Project.find session[:thank_you_id]
-    @title = t('payment_stream.thank_you.title')
+    @title = t('catarse.payment_stream.thank_you.title')
     session[:thank_you_id] = nil
   end
 end

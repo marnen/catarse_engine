@@ -12,7 +12,7 @@ class UnsubscribesController < ApplicationController
         parent.unsubscribes.create!(project_id: u[:project_id], notification_type_id: u[:notification_type_id])
       end
     end
-    flash[:notice] = t('users.current_user_fields.updated')
+    flash[:notice] = t('catarse.users.current_user_fields.updated')
     return redirect_to user_path(parent, :anchor => 'unsubscribes')
   end
 

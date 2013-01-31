@@ -1,15 +1,15 @@
 module Catarse
 class StaticController < ApplicationController
   def guidelines
-    @title = t('static.guidelines.title')
+    @title = t('catarse.static.guidelines.title')
   end
 
   def guidelines_tips
-    @title = t('static.guidelines_tips.title')
+    @title = t('catarse.static.guidelines_tips.title')
   end
 
   def faq
-    @title = t('static.faq.title')
+    @title = t('catarse.static.faq.title')
   end
 
   def sitemap

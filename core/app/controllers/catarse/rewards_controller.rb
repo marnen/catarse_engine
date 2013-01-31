@@ -27,11 +27,11 @@ class RewardsController < ApplicationController
   def create
     create! do |success, failure|
       success.html {
-        flash[:notice] = I18n.t('controllers.rewards.create.notice')
+        flash[:notice] = I18n.t('catarse.controllers.rewards.create.notice')
         redirect_to project_path(resource.project)
       }
       failure.html {
-        flash[:alert] = I18n.t('controllers.rewards.create.alert')
+        flash[:alert] = I18n.t('catarse.controllers.rewards.create.alert')
         redirect_to project_path(resource.project)
       }
     end

@@ -29,8 +29,8 @@ class ApplicationController < ActionController::Base
 
   before_filter do
     if params[:newsletter].present?
-      flash[:notice] = I18n.t('newsletter_ok_body') if params[:newsletter] == 'ok'
-      flash[:alert] = I18n.t('newsletter_error_body') if params[:newsletter] == 'error'
+      flash[:notice] = I18n.t('catarse.newsletter_ok_body') if params[:newsletter] == 'ok'
+      flash[:alert] = I18n.t('catarse.newsletter_error_body') if params[:newsletter] == 'error'
     end
   end
 
@@ -95,7 +95,7 @@ class ApplicationController < ActionController::Base
     unless new_locale
       new_locale = request.compatible_language_from(I18n.available_locales.map(&:to_s))
       new_locale = I18n.default_locale.to_s unless new_locale
-      flash[:locale] = t('notify_locale', :locale => new_locale)
+      flash[:locale] = t('catarse.notify_locale', :locale => new_locale)
     end
     return redirect_to replace_locale(new_locale)
   end
@@ -157,11 +157,11 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    require_condition(current_user, t('require_login'))
+    require_condition(current_user, t('catarse.require_login'))
   end
 
   def require_admin
-    require_condition((current_user and current_user.admin), t('require_admin'))
+    require_condition((current_user and current_user.admin), t('catarse.require_admin'))
   end
 
   def render_404

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def update
     update! do
-      flash[:notice] = t('users.current_user_fields.updated')
+      flash[:notice] = t('catarse.users.current_user_fields.updated')
       return redirect_to user_path(@user, :anchor => 'settings')
     end
   end
