@@ -3,6 +3,8 @@ module Catarse
     class Engine < ::Rails::Engine
       isolate_namespace Catarse
 
+      YAML::ENGINE.yamler = 'syck' if defined?(YAML::ENGINE)
+
       config.autoload_paths += %W(#{config.root}/lib #{config.root}/lib/** #{config.root}/app/presenters #{config.root}/app/presenters/** #{config.root}/app/business/ #{config.root}/app/business/**)
 
       config.after_initialize do
