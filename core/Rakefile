@@ -12,4 +12,7 @@ rescue LoadError
   RDoc::Task = Rake::RDocTask
 end
 
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new
+
 Bundler::GemHelper.install_tasks
