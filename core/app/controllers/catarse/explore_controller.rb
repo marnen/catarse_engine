@@ -2,7 +2,7 @@ module Catarse
 class ExploreController < ApplicationController
 
   def index
-    @title = t('explore.title')
+    @title = t('catarse.explore.title')
     @categories = Category.with_projects.order(:name).all
 
     # Just to know if we should present the menu entries, the actual projects are fetched via AJAX

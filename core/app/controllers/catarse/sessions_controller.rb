@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
       cookies[:remember_me_id] = { :value => user.id, :expires => 30.days.from_now }
       cookies[:remember_me_hash] = { :value => user.remember_me_hash, :expires => 30.days.from_now }
     end
-    flash[:success] = t('sessions.auth.success', :name => user.display_name)
+    flash[:success] = t('catarse.sessions.auth.success', :name => user.display_name)
     redirect_back_or_default :root
   end
 
@@ -33,12 +33,12 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     cookies.delete :remember_me_id if cookies[:remember_me_id]
     cookies.delete :remember_me_hash if cookies[:remember_me_hash]
-    flash[:success] = t('sessions.destroy.success')
+    flash[:success] = t('catarse.sessions.destroy.success')
     redirect_to :root
   end
 
   def failure
-    flash[:failure] = t('sessions.failure.error')
+    flash[:failure] = t('catarse.sessions.failure.error')
     redirect_to :root
   end
 
@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
     raise "Forbiden" unless Rails.env == "test"
     user = Factory(:user, :uid => 'fake_login')
     session[:user_id] = user.id
-    flash[:success] = t('sessions.auth.success', :name => user.display_name)
+    flash[:success] = t('catarse.sessions.auth.success', :name => user.display_name)
     redirect_to :root
   end
 

@@ -48,13 +48,13 @@ class ProjectsController < ApplicationController
 
   def start
     return unless require_login
-    @title = t('projects.start.title')
+    @title = t('catarse.projects.start.title')
   end
 
   def new
     return unless require_login
     new! do
-      @title = t('projects.new.title')
+      @title = t('catarse.projects.new.title')
       @project.rewards.build
     end
   end
@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
       params[:project][:permalink] = nil
     end
     validate_rewards_attributes if params[:project][:rewards_attributes].present?
-    create!(:notice => t('projects.create.success'))
+    create!(:notice => t('catarse.projects.create.success'))
     # When it can't create the project the @project doesn't exist and then it causes a record not found
     # because @project.reload *works only with created records*
     unless @project.new_record?
