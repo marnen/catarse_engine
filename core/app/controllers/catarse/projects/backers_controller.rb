@@ -1,4 +1,4 @@
-class Projects::BackersController < ApplicationController
+class Catarse::Projects::BackersController < ApplicationController
   inherit_resources
   actions :index, :new, :update_info
   before_filter :load_project

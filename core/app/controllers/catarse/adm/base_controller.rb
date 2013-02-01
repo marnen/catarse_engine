@@ -1,4 +1,4 @@
-class Adm::BaseController < ApplicationController
+class Catarse::Adm::BaseController < ApplicationController
   before_filter :require_admin
   @@menu_items = {}
   cattr_accessor :menu_items

@@ -1,7 +1,7 @@
-class Adm::BackersController < Adm::BaseController
+class Catarse::Adm::BackersController < Catarse::Adm::BaseController
   inherit_resources
   can_edit_on_the_spot
-  menu I18n.t("adm.backers.index.menu") => Rails.application.routes.url_helpers.adm_backers_path
+  menu I18n.t("adm.backers.index.menu") => Catarse::Core::Engine.routes.url_helpers.adm_backers_path
   before_filter :set_title
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
 
