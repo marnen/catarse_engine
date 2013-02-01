@@ -24,8 +24,8 @@ class Projects::BackersController < ApplicationController
       return redirect_to :root
     end
 
-    @review_url = ::Configuration[:secure_review_host] ?
-      review_project_backers_url(@project, {:host => ::Configuration[:secure_review_host], :protocol => 'https'}) :
+    @review_url = Catarse::Configuration[:secure_review_host] ?
+      review_project_backers_url(@project, {:host => Catarse::Configuration[:secure_review_host], :protocol => 'https'}) :
       review_project_backers_path(@project)
 
     @title = t('projects.backers.new.title', :name => @project.name)

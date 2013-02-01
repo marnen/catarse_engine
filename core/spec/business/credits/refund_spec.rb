@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Credits::Refund do
+describe Catarse::Credits::Refund do
   let(:failed_project){ Factory(:project, state: 'failed')  }
   before(:each) do
     @backer = Factory(:backer, value: 20)
@@ -33,7 +33,7 @@ describe Credits::Refund do
         @backer.update_column :refunded, true
         @backer.reload
 
-        lambda { 
+        lambda {
           subject.make_request!
         }.should raise_exception(I18n.t('credits.refund.refunded'))
       end
@@ -43,7 +43,7 @@ describe Credits::Refund do
         @backer.update_column :requested_refund, true
         @backer.reload
 
-        lambda { 
+        lambda {
           subject.make_request!
         }.should raise_exception(I18n.t('credits.refund.requested_refund'))
       end

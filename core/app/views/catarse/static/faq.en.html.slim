@@ -158,13 +158,13 @@
         p OThe project owner - and only him/her. Catarse is only a process facilitator.
         h2 Some more stuff
         h3 Does Catarse have a blog?
-        p Yes. This is it: #{link_to Configuration[:blog_url], Configuration[:blog_url], :target => :_blank}.
+        p Yes. This is it: #{link_to Catarse::Configuration[:blog_url], Catarse::Configuration[:blog_url], :target => :_blank}.
         h3 Is Catarse on Twitter?
-        p Yes, our profile is #{link_to "@#{Configuration[:twitter_username]}", "http://twitter.com/#{ Configuration[:twitter_username] }", :target => :_blank}.
+        p Yes, our profile is #{link_to "@#{Catarse::Configuration[:twitter_username]}", "http://twitter.com/#{ Catarse::Configuration[:twitter_username] }", :target => :_blank}.
         h3 Does it have Facebook page?
-        p Yes. You can see it  #{link_to 'here', Configuration[:facebook_url], :target => :_blank}.
+        p Yes. You can see it  #{link_to 'here', Catarse::Configuration[:facebook_url], :target => :_blank}.
         h3 Is there somewhere I can request new features?
         p Sure! http://suporte.catarse.me/
         h3 I have a question that is not answered here, is there some way I can contact you?
-        p Sure. You can contact our customer service team #{mail_to Configuration[:email_contact], 'here', :target => :_blank}.
+        p Sure. You can contact our customer service team #{mail_to Catarse::Configuration[:email_contact], 'here', :target => :_blank}.
     .clearfix

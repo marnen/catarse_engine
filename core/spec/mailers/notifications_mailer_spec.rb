@@ -5,10 +5,10 @@ describe NotificationsMailer do
   subject{ NotificationsMailer.notify(notification) }
 
   before do
-    ::Configuration['email_contact'] = 'contact@foo.bar'
+    Catarse::Configuration['email_contact'] = 'contact@foo.bar'
     Mail::Message.any_instance.stubs(:deliver)
     NotificationsMailer.any_instance.expects(:mail).at_least_once.with({
-      :from => "#{I18n.t('site.name')} <#{Configuration[:email_contact]}>",
+      :from => "#{I18n.t('site.name')} <#{Catarse::Configuration[:email_contact]}>",
       :to => notification.user.email,
       :subject => I18n.t('notifications.confirm_backer.subject', :project_name => notification.project.name),
       :template_name => 'confirm_backer'

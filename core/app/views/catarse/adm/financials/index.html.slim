@@ -57,7 +57,7 @@
                   td= project.display_goal
                   td= "#{project.display_pledged} (#{project.progress}%)"
                   td= number_to_currency project.backers.confirmed.sum('value * payment_service_fee/100'), :unit => 'R$', :precision => 2, :delimiter => '.'
-                  - catarse_fee = Configuration[:catarse_fee].to_f * project.pledged
+                  - catarse_fee = Catarse::Configuration[:catarse_fee].to_f * project.pledged
                   td
                     = number_to_currency catarse_fee, :unit => 'R$', :precision => 0, :delimiter => '.'
                     br

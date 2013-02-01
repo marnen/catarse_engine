@@ -40,7 +40,7 @@ class Update < ActiveRecord::Base
         project_name: project.name,
         project_owner: project.user.display_name,
         project_owner_email: project.user.email,
-        from: ::Configuration[:email_no_reply],
+        from: Catarse::Configuration[:email_no_reply],
         update_title: title,
         update: self,
         update_comment: email_comment_html

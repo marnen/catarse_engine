@@ -32,5 +32,5 @@ end
   twitter_username: "Catarse_",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
 }.each do |name, value|
-  Configuration.find_or_create_by_name_and_value name, value
+  Catarse::Configuration.find_or_create_by_name_and_value name, value
 end

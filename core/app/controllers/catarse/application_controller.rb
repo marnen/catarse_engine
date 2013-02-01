@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 
   enable_authorization unless :devise_controller?
 
+  def current_ability
+    @current_ability ||= Catarse::Ability.new(current_user)
+  end
+
   rescue_from CanCan::Unauthorized do |exception|
     if request.env["HTTP_REFERER"]
       redirect_to :back, alert: exception.message
@@ -37,15 +41,15 @@ class ApplicationController < ActionController::Base
   # We use this method only to make stubing easier
   # and remove FB templates from acceptance tests
   def render_facebook_sdk
-    render_to_string(partial: 'layouts/facebook_sdk').html_safe
+    render_to_string(partial: 'layouts/catarse/facebook_sdk').html_safe
   end
 
   def render_twitter options={}
-    render_to_string(partial: 'layouts/twitter', locals: options).html_safe
+    render_to_string(partial: 'layouts/catarse/twitter', locals: options).html_safe
   end
 
   def render_facebook_like options={}
-    render_to_string(partial: 'layouts/facebook_like', locals: options).html_safe
+    render_to_string(partial: 'layouts/catarse/facebook_like', locals: options).html_safe
   end
 
   private
@@ -169,7 +173,7 @@ class ApplicationController < ActionController::Base
   end
 
   def force_http
-    redirect_to(protocol: 'http', host: ::Configuration[:base_domain]) if request.ssl?
+    redirect_to(protocol: 'http', host: Catarse::Configuration[:base_domain]) if request.ssl?
   end
 end
 end

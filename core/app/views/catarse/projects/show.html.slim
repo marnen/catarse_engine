@@ -32,7 +32,7 @@
           - if can? :update, @project
             .alert.alert-warning
               = t('.waiting_owner_html')
-    #project_description[data-project=@project.to_json]
+    /#project_description[data-project=@project.to_json]
     .project_image
       = image_tag @project.display_image, :width=>'85px', :height => '67px'
     .section_header
@@ -104,7 +104,7 @@
                     .loading_updates.hide= image_tag "loading.gif"
 
           .updates_wrapper
-            = render :template => 'updates/index'
+            = render :template => 'catarse/updates/index'
         .media_content_backers
           #project_backers.content.hide
         #project_comments.content.hide= render :partial => 'comments'

@@ -117,20 +117,20 @@ describe Projects::BackersController do
       end
 
       context "when project.can_back? is true and we have configured a secure review url" do
-        before do 
-          ::Configuration[:secure_review_host] = 'secure.catarse.me'
+        before do
+          Catarse::Configuration[:secure_review_host] = 'secure.catarse.me'
           Project.any_instance.stubs(:can_back?).returns(true)
           get :new, {:locale => :pt, :project_id => project.id}
         end
 
         it "should assign the https url to @review_url" do
-          assigns(:review_url).should == review_project_backers_url(project, :host => Configuration[:secure_review_host], :protocol => 'https')
+          assigns(:review_url).should == review_project_backers_url(project, :host => Catarse::Configuration[:secure_review_host], :protocol => 'https')
         end
       end
 
       context "when project.can_back? is true and we have not configured a secure review url" do
-        before do 
-          ::Configuration[:secure_review_host] = nil
+        before do
+          Catarse::Configuration[:secure_review_host] = nil
           Project.any_instance.stubs(:can_back?).returns(true)
           get :new, {:locale => :pt, :project_id => project.id}
         end

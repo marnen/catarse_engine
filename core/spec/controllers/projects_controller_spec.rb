@@ -4,7 +4,7 @@ require 'spec_helper'
 describe ProjectsController do
   before{ Notification.unstub(:create_notification) }
   before{ controller.stubs(:current_user).returns(current_user) }
-  before{ ::Configuration[:base_url] = 'http://catarse.me' }
+  before{ Catarse::Configuration[:base_url] = 'http://catarse.me' }
   render_views
   subject{ response }
   let(:project){ Factory(:project) }
@@ -59,17 +59,17 @@ describe ProjectsController do
   describe "PUT update" do
     shared_examples_for "updatable project" do
       before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
-      it { 
+      it {
         project.reload
-        project.name.should == 'My Updated Title' 
+        project.name.should == 'My Updated Title'
       }
     end
 
     shared_examples_for "protected project" do
       before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
-      it { 
+      it {
         project.reload
-        project.name.should == 'Foo bar' 
+        project.name.should == 'Foo bar'
       }
     end
 
@@ -123,7 +123,7 @@ describe ProjectsController do
 
   describe "GET embed" do
     before do
-      get :embed, :id => project, :locale => :pt 
+      get :embed, :id => project, :locale => :pt
     end
     its(:status){ should == 200 }
   end
