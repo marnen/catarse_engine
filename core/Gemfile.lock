@@ -7,32 +7,6 @@ GIT
       supermodel
 
 GIT
-  remote: git://github.com/devton/catarse_moip.git
-  revision: 931bcddf2c092083626b78748589557655e79b8b
-  specs:
-    catarse_moip (0.1.1)
-      libxml-ruby (~> 2.3.3)
-      rails (~> 3.2.6)
-
-GIT
-  remote: git://github.com/devton/catarse_paypal_express.git
-  revision: 4fd17e269395ee4b3a32528ace0bcb7eec57a953
-  ref: 4fd17e269395ee4b3a32528ace0bcb7eec57a953
-  specs:
-    catarse_paypal_express (0.1.0)
-      activemerchant (~> 1.17.0)
-      rails (~> 3.2.6)
-
-GIT
-  remote: git://github.com/moiplabs/moip-ruby.git
-  revision: 2b61a77355cb8c5487ff68be0eef8873696a110e
-  specs:
-    moip (1.0.2)
-      activesupport (>= 2.3.2)
-      httparty (~> 0.6.1)
-      nokogiri (~> 1.4.3)
-
-GIT
   remote: git://github.com/ncri/validation_reflection.git
   revision: 60320e6beb088808fd625a8d958dbd0d2661d494
   specs:
@@ -45,6 +19,11 @@ GIT
   branch: 2.0
   specs:
     cancan (2.0.0.alpha)
+
+PATH
+  remote: .
+  specs:
+    catarse_core (1.0.0.beta)
 
 GEM
   remote: http://rubygems.org/
@@ -221,7 +200,6 @@ GEM
     libwebsocket (0.1.7.1)
       addressable
       websocket
-    libxml-ruby (2.3.3)
     loofah (1.0.0)
       nokogiri (>= 1.3.3)
     mail (2.4.4)
@@ -462,9 +440,8 @@ DEPENDENCIES
   cancan!
   capybara (>= 1.0.1)
   carrierwave (~> 0.7.0)
+  catarse_core!
   catarse_mailchimp!
-  catarse_moip!
-  catarse_paypal_express!
   coffee-rails (~> 3.2.2)
   compass-960-plugin (~> 0.10.4)
   compass-rails (~> 1.0.2)
@@ -491,7 +468,6 @@ DEPENDENCIES
   memoist (~> 0.2.0)
   meta_search (= 1.1.3)
   mocha (= 0.10.4)
-  moip!
   omniauth (~> 1.1.0)
   omniauth-facebook (~> 1.2.0)
   omniauth-github (~> 1.0.1)
