@@ -1,6 +1,6 @@
 module Catarse
 class ProjectDecorator < Draper::Base
-  decorates :project
+  decorates_association :project, :with => :catarse
   include Draper::LazyHelpers
 
   def remaining_days

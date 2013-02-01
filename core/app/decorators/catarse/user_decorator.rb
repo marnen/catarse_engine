@@ -1,6 +1,6 @@
 module Catarse
 class UserDecorator < Draper::Base
-  decorates :user
+  decorates_association :user, :with => :catarse
   include Draper::LazyHelpers
 
   def display_provider
