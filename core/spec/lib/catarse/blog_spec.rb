@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Blog do
+describe Catarse::Blog do
   describe ".fetch_last_posts" do
     it "should fetch last posts from the blog url in configuration" do
       Catarse::Configuration[:blog_url] = 'test'

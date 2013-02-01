@@ -1,5 +1,5 @@
 #encoding:utf-8
-module Reports
+module Catarse::Reports
   module Users
     class Emails
       class << self

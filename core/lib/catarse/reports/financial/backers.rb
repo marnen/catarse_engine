@@ -1,5 +1,5 @@
 #encoding:utf-8
-module Reports
+module Catarse::Reports
   module Financial
     class Backers
       class << self

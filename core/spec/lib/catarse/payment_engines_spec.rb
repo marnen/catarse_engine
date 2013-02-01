@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe PaymentEngines do
+describe Catarse::PaymentEngines do
   let(:engine){ {name: 'test', review_path: ->(backer){ "/#{backer}" }, locale: 'en'} }
   let(:engine_pt){ {name: 'test pt', review_path: ->(backer){ "/#{backer}" }, locale: 'pt'} }
   before{ PaymentEngines.clear }
@@ -25,7 +25,7 @@ describe PaymentEngines do
   describe ".engines" do
     subject{ PaymentEngines.engines }
     before do
-      PaymentEngines.register engine 
+      PaymentEngines.register engine
       PaymentEngines.register engine_pt
     end
     context "when locale is pt" do

@@ -1,4 +1,4 @@
-class PaymentEngines
+class Catarse::PaymentEngines
   def self.register options
     @@engines ||= []
     @@engines.push(options)

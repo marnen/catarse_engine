@@ -1,6 +1,6 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../../spec_helper')
+require 'spec_helper'
 
-describe Reports::Financial::Backers do
+describe Catarse::Reports::Financial::Backers do
   describe ".report" do
     before do
       @project = create(:project)
