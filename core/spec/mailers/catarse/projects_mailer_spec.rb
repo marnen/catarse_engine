@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe ProjectsMailer do
+describe Catarse::ProjectsMailer do
   it "should send project, with HTML-safe fields and converting new lines to <br>" do
     how_much_you_need = "1000 <javascript>"
     days = "12"

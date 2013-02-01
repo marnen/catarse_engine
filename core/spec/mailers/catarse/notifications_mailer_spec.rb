@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe NotificationsMailer do
+describe Catarse::NotificationsMailer do
   let(:notification){ Factory(:notification, :notification_type => Factory(:notification_type, :name => 'confirm_backer'), :mail_params => {:project_name => Factory(:project).name}, :user => Factory(:user)) }
   subject{ NotificationsMailer.notify(notification) }
 
