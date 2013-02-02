@@ -20,8 +20,7 @@ class BaseController < ActionController::Base
   end
 
   helper_method :current_user, :replace_locale, :namespace,
-                :fb_admins, :has_institutional_videos?, :institutional_video,
-                :statistics, :render_facebook_sdk, :render_facebook_like,
+                :fb_admins, :statistics, :render_facebook_sdk, :render_facebook_like,
                 :render_twitter
   before_filter :set_locale
   before_filter :detect_locale
@@ -56,14 +55,6 @@ class BaseController < ActionController::Base
   private
   def statistics
     @statistics ||= Statistics.first
-  end
-
-  def has_institutional_videos?
-    InstitutionalVideo.visibles.present?
-  end
-
-  def institutional_video
-    InstitutionalVideo.visibles.random.first
   end
 
   def fb_admins

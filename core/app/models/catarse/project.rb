@@ -24,14 +24,11 @@ class Project < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :category
-  has_many :projects_curated_pages
-  has_many :curated_pages, :through => :projects_curated_pages
   has_many :backers, :dependent => :destroy
   has_many :rewards, :dependent => :destroy
   has_many :updates, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
   has_one :project_total
-  has_and_belongs_to_many :managers, :join_table => "projects_managers", :class_name => 'User'
   accepts_nested_attributes_for :rewards
 
   has_vimeo_video :video_url, :message => I18n.t('project.vimeo_regex_validation')
@@ -224,6 +221,7 @@ class Project < ActiveRecord::Base
       expired: expired?,
       successful: successful? || reached_goal?,
       waiting_confirmation: waiting_confirmation?,
+      waiting_funds: waiting_funds?,
       display_status_to_box: display_status.blank? ? nil : I18n.t("project.display_status.#{display_status}"),
       display_expires_at: display_expires_at,
       in_time: in_time?

@@ -91,26 +91,6 @@ Factory.define :configuration, :class => Catarse::Configuration do |f|
   f.value 'Bar'
 end
 
-Factory.define :curated_page, :class => Catarse::CuratedPage do |f|
-  f.name 'Foo Page'
-  f.permalink { Factory.next(:permalink) }
-  f.description 'foo description'
-  f.logo { File.open("#{Rails.root}/spec/fixtures/image.png") }
-  f.video_url 'http://vimeo.com/28220980'
-end
-
-Factory.define :projects_curated_page, :class => Catarse::ProjectsCuratedPage do |f|
-  f.association :project, :factory => :project
-  f.association :curated_page, :factory => :curated_page
-end
-
-Factory.define :institutional_video, :class => Catarse::InstitutionalVideo do |f|
-  f.title "My title"
-  f.description "Some Description"
-  f.video_url "http://vimeo.com/35492726"
-  f.visible false
-end
-
 Factory.define :update, :class => Catarse::Update do |f|
   f.association :project, :factory => :project
   f.association :user, :factory => :user
