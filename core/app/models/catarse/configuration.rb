@@ -2,6 +2,7 @@ require 'memoist'
 
 module Catarse
 class Configuration < ActiveRecord::Base
+  attr_accessible :name, :value
   validates_presence_of :name
   class << self
     extend Memoist
