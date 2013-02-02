@@ -6,7 +6,7 @@ describe Catarse::Credits::Refund do
     @backer = Factory(:backer, value: 20)
   end
 
-  subject { Credits::Refund.new(@backer, @backer.user) }
+  subject { Catarse::Credits::Refund.new(@backer, @backer.user) }
 
   context "when user request a refund" do
     it do

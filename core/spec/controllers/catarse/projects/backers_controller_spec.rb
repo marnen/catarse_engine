@@ -110,7 +110,7 @@ describe Catarse::Projects::BackersController do
 
       context "when project.can_back? is false" do
         before do
-          Project.any_instance.stubs(:can_back?).returns(false)
+          Catarse::Project.any_instance.stubs(:can_back?).returns(false)
           get :new, {:locale => :pt, :project_id => project.id}
         end
         it{ should redirect_to root_path }
@@ -119,7 +119,7 @@ describe Catarse::Projects::BackersController do
       context "when project.can_back? is true and we have configured a secure review url" do
         before do
           Catarse::Configuration[:secure_review_host] = 'secure.catarse.me'
-          Project.any_instance.stubs(:can_back?).returns(true)
+          Catarse::Project.any_instance.stubs(:can_back?).returns(true)
           get :new, {:locale => :pt, :project_id => project.id}
         end
 
@@ -131,7 +131,7 @@ describe Catarse::Projects::BackersController do
       context "when project.can_back? is true and we have not configured a secure review url" do
         before do
           Catarse::Configuration[:secure_review_host] = nil
-          Project.any_instance.stubs(:can_back?).returns(true)
+          Catarse::Project.any_instance.stubs(:can_back?).returns(true)
           get :new, {:locale => :pt, :project_id => project.id}
         end
 

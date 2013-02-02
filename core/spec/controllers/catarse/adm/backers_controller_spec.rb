@@ -65,8 +65,8 @@ describe Catarse::Adm::BackersController do
 
   describe ".menu" do
     it "should add a menu entry to the menu_items class variable when we pass a parameter and retrieve when we have no parameters" do
-      Adm::BackersController.menu "Test Menu" => "/path"
-      Adm::BaseController.menu.should include("Test Menu")
+      Catarse::Adm::BackersController.menu "Test Menu" => "/path"
+      Catarse::Adm::BaseController.menu.should include("Test Menu")
     end
   end
 end
