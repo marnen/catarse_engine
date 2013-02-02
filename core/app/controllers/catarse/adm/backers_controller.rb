@@ -1,4 +1,5 @@
-class Catarse::Adm::BackersController < Catarse::Adm::BaseController
+module Catarse
+class Adm::BackersController < Catarse::Adm::BaseController
   inherit_resources
   can_edit_on_the_spot
   menu I18n.t("adm.backers.index.menu") => Catarse::Core::Engine.routes.url_helpers.adm_backers_path
@@ -52,4 +53,5 @@ class Catarse::Adm::BackersController < Catarse::Adm::BaseController
     @search = Backer.search(params[:search])
     @backers = @search.order("created_at DESC").page(params[:page])
   end
+end
 end

@@ -1,4 +1,5 @@
-class Catarse::Adm::UsersController < Catarse::Adm::BaseController
+module Catarse
+class Adm::UsersController < Catarse::Adm::BaseController
   inherit_resources
   menu I18n.t("adm.users.index.menu") => Catarse::Core::Engine.routes.url_helpers.adm_users_path
   before_filter :set_title
@@ -23,4 +24,4 @@ class Catarse::Adm::UsersController < Catarse::Adm::BaseController
     @users ||= end_of_association_chain.order_by(params[:order_by] || 'coalesce(user_totals.sum, 0) DESC').includes(:user_total).page(params[:page])
   end
 end
-
+end

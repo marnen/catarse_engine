@@ -1,5 +1,5 @@
 module Catarse
-class ExploreController < ApplicationController
+class ExploreController < BaseController
 
   def index
     @title = t('catarse.explore.title')

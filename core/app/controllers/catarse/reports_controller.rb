@@ -1,5 +1,5 @@
 module Catarse
-class ReportsController < ApplicationController
+class ReportsController < BaseController
 
   def financial_by_project
     return unless require_admin

@@ -1,5 +1,5 @@
 module Catarse
-class EmailsController < ApplicationController
+class EmailsController < BaseController
   def index
     render :text => 'teste', :layout => 'email'
   end

@@ -1,6 +1,6 @@
 # coding: utf-8
 module Catarse
-class UsersController < ApplicationController
+class UsersController < BaseController
   load_and_authorize_resource except: [:update_attribute_on_the_spot, :projects]
   inherit_resources
   actions :show, :update, :unsubscribe_update

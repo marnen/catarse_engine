@@ -1,5 +1,5 @@
 module Catarse
-class BackersController < ApplicationController
+class BackersController < BaseController
   inherit_resources
   defaults :resource_class => Backer, :collection_name => 'backs', :instance_name => 'back'
   belongs_to :user

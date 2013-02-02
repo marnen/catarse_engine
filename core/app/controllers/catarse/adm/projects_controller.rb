@@ -1,4 +1,5 @@
-class Catarse::Adm::ProjectsController < Catarse::Adm::BaseController
+module Catarse
+class Adm::ProjectsController < Catarse::Adm::BaseController
   inherit_resources
   menu I18n.t("adm.projects.index.menu") => Catarse::Core::Engine.routes.url_helpers.adm_projects_path
 
@@ -34,4 +35,5 @@ class Catarse::Adm::ProjectsController < Catarse::Adm::BaseController
     @projects = apply_scopes(Project).page(params[:page])
     @projects = @projects.order('created_at DESC') unless current_scopes.include?(:order_table)
   end
+end
 end

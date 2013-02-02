@@ -1,5 +1,5 @@
 module Catarse
-class PaymentStreamController < ApplicationController
+class PaymentStreamController < BaseController
   skip_before_filter :verify_authenticity_token, :only => [:moip]
 
   def thank_you

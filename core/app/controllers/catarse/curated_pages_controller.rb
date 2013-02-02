@@ -1,5 +1,5 @@
 module Catarse
-class CuratedPagesController < ApplicationController
+class CuratedPagesController < BaseController
   inherit_resources
   load_and_authorize_resource
 

@@ -1,6 +1,6 @@
 # coding: utf-8
 module Catarse
-class ProjectsController < ApplicationController
+class ProjectsController < BaseController
   include ActionView::Helpers::DateHelper
 
   load_and_authorize_resource only: [ :update, :destroy ]

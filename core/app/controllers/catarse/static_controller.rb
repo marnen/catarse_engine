@@ -1,5 +1,5 @@
 module Catarse
-class StaticController < ApplicationController
+class StaticController < BaseController
   def guidelines
     @title = t('catarse.static.guidelines.title')
   end

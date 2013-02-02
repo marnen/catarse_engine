@@ -1,4 +1,5 @@
-class Catarse::Projects::BackersController < ApplicationController
+module Catarse
+class Projects::BackersController < BaseController
   inherit_resources
   actions :index, :new, :update_info
   before_filter :load_project
@@ -89,4 +90,5 @@ class Catarse::Projects::BackersController < ApplicationController
   def load_project
     @project = Project.find params[:project_id]
   end
+end
 end

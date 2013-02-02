@@ -1,6 +1,6 @@
 # coding: utf-8
 module Catarse
-class SessionsController < ApplicationController
+class SessionsController < BaseController
 
   skip_before_filter :detect_locale
 

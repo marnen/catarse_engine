@@ -1,5 +1,5 @@
 module Catarse
-class UnsubscribesController < ApplicationController
+class UnsubscribesController < BaseController
   inherit_resources
   belongs_to :user
 
