@@ -13,7 +13,7 @@ describe Catarse::PaymentStreamController do
       it{ should be_redirect }
 
       it "should show failure flash" do
-        request.flash[:failure].should == I18n.t('payment_stream.thank_you.error')
+        request.flash[:failure].should == I18n.t('catarse.payment_stream.thank_you.error')
       end
     end
 
@@ -24,9 +24,9 @@ describe Catarse::PaymentStreamController do
         get :thank_you, :locale => :pt
       end
 
-      it{ should render_template("payment_stream/thank_you") }
+      it{ should render_template("catarse/payment_stream/thank_you") }
       it{ should be_success }
-      its(:body){ should =~ /#{I18n.t('payment_stream.thank_you.title')}/ }
+      its(:body){ should =~ /#{I18n.t('catarse.payment_stream.thank_you.title')}/ }
     end
 
   end
