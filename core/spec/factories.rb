@@ -14,7 +14,7 @@ Factory.sequence :permalink do |n|
   "foo_page_#{n}"
 end
 
-Factory.define :user do |f|
+Factory.define :user, :class => Catarse::User do |f|
   f.provider "twitter"
   f.uid { Factory.next(:uid) }
   f.name "Foo bar"
@@ -22,11 +22,11 @@ Factory.define :user do |f|
   f.bio "This is Foo bar's biography."
 end
 
-Factory.define :category do |f|
+Factory.define :category, :class => Catarse::Category do |f|
   f.name { Factory.next(:name) }
 end
 
-Factory.define :project do |f|
+Factory.define :project, :class => Catarse::Project do |f|
   f.name "Foo bar"
   f.permalink { Factory.next(:permalink) }
   f.association :user, :factory => :user
@@ -46,26 +46,26 @@ Factory.define :notification_type do |f|
   f.name "confirm_backer"
 end
 
-Factory.define :unsubscribe do |f|
+Factory.define :unsubscribe, :class => Catarse::Unsubscribe do |f|
   f.association :user, :factory => :user
   f.association :project, :factory => :project
   f.association :notification_type, :factory => :notification_type
 end
 
-Factory.define :notification do |f|
+Factory.define :notification, :class => Catarse::Notification do |f|
   f.association :user, :factory => :user
   f.association :backer, :factory => :backer
   f.association :project, :factory => :project
   f.association :notification_type, :factory => :notification_type
 end
 
-Factory.define :reward do |f|
+Factory.define :reward, :class => Catarse::Reward do |f|
   f.association :project, :factory => :project
   f.minimum_value 1.00
   f.description "Foo bar"
 end
 
-Factory.define :backer do |f|
+Factory.define :backer, :class => Catarse::Backer do |f|
   f.association :project, :factory => :project
   f.association :user, :factory => :user
   f.confirmed true
@@ -73,12 +73,12 @@ Factory.define :backer do |f|
   f.value 10.00
 end
 
-Factory.define :payment_notification do |f|
+Factory.define :payment_notification, :class => Catarse::PaymentNotification do |f|
   f.association :backer, :factory => :backer
   f.extra_data {}
 end
 
-Factory.define :oauth_provider do |f|
+Factory.define :oauth_provider, :class => Catarse::OauthProvider do |f|
   f.name 'GitHub'
   f.strategy 'GitHub'
   f.path 'github'
@@ -86,32 +86,32 @@ Factory.define :oauth_provider do |f|
   f.secret 'test_secret'
 end
 
-Factory.define :configuration do |f|
+Factory.define :configuration, :class => Catarse::Configuration do |f|
   f.name 'Foo'
   f.value 'Bar'
 end
 
-Factory.define :curated_page do |f|
+Factory.define :curated_page, :class => Catarse::CuratedPage do |f|
   f.name 'Foo Page'
   f.permalink { Factory.next(:permalink) }
   f.description 'foo description'
-  f.logo File.open("#{Rails.root}/spec/fixtures/image.png")
+  f.logo { File.open("#{Rails.root}/spec/fixtures/image.png") }
   f.video_url 'http://vimeo.com/28220980'
 end
 
-Factory.define :projects_curated_page do |f|
+Factory.define :projects_curated_page, :class => Catarse::ProjectsCuratedPage do |f|
   f.association :project, :factory => :project
   f.association :curated_page, :factory => :curated_page
 end
 
-Factory.define :institutional_video do |f|
+Factory.define :institutional_video, :class => Catarse::InstitutionalVideo do |f|
   f.title "My title"
   f.description "Some Description"
   f.video_url "http://vimeo.com/35492726"
   f.visible false
 end
 
-Factory.define :update do |f|
+Factory.define :update, :class => Catarse::Update do |f|
   f.association :project, :factory => :project
   f.association :user, :factory => :user
   f.title "My title"
