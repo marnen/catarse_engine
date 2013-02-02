@@ -1,6 +1,8 @@
 # coding: utf-8
 module Catarse
 class BaseController < ActionController::Base
+  layout 'catarse/application'
+
   protect_from_forgery
 
   enable_authorization unless :devise_controller?
