@@ -3,7 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
 require 'sidekiq/testing'
-require 'factory_girl'
+require 'factory_girl_rails'
 require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -14,6 +14,7 @@ RSpec.configure do |config|
   config.mock_with :mocha
   config.include Factory::Syntax::Methods
   config.include ActionView::Helpers::TextHelper
+  config.before(:each, :type => :controller) { @routes = Catarse::Core::Engine.routes }
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
