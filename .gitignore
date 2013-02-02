@@ -19,3 +19,4 @@ npm-debug.log
 db/structure.sql
 .sass-cache
 */spec/dummy/log/*
+*/spec/dummy/db/schema.rb
