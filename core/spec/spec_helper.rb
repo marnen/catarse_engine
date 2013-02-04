@@ -5,10 +5,11 @@ require 'rspec/rails'
 require 'sidekiq/testing'
 require 'factory_girl_rails'
 require 'database_cleaner'
+require 'shoulda'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[Catarse::Core::Engine.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
   config.mock_with :mocha
@@ -50,7 +51,7 @@ RSpec.configure do |config|
   end
 
   def mock_tumblr method=:two
-    require "#{Rails.root}/spec/fixtures/tumblr_data" # just a fixture
+    require "#{Catarse::Core::Engine.root}/spec/fixtures/tumblr_data" # just a fixture
     Tumblr::Post.stubs(:all).returns(TumblrData.send(method))
   end
 end
