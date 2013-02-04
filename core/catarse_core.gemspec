@@ -5,10 +5,15 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'catarse_core'
   s.version     = version
-  s.summary     = ''
-  s.description = ''
+  s.summary     = 'Required dependency for catarse'
+  s.description = 'The first open source crowdfunding platform for creative projects in the world'
 
-  s.files        = Dir['README.md', 'app/**/*', 'config/**/*', 'lib/**/*', 'db/**/*']
+  s.author       = 'Daniel Weinmann'
+  s.email        = 'danielweinmann@gmail.com'
+  s.homepage     = 'https://github.com/danielweinmann/catarse'
+  s.license      = %q{MIT}
+
+  s.files        = Dir['app/**/*', 'config/**/*', 'lib/**/*', 'db/**/*']
   s.require_path = 'lib'
   s.requirements << 'none'
 
