@@ -113,7 +113,7 @@
         #project_updates.content.hide
           - if can? :update, @project
             .bootstrap-form
-              = semantic_form_for [@project, Update.new(:user_id => current_user.id)] do |form|
+              = semantic_form_for [@project, Catarse::Update.new(:user_id => current_user.id)] do |form|
                 = form.inputs do
                   = form.input :title, as: :string, label: t('projects.project_updates.title')
                   = form.input :comment, as: :text, label: t('projects.project_updates.comment'), input_html: {rows: 10}
@@ -241,7 +241,7 @@
             = link_to t('.menu.add_reward'), 'javascript:void(0);', class: 'btn btn-success pull-right add_new_reward'
             .clearfix
             .well.new_reward_content.hide
-              = semantic_form_for [@project, Reward.new] do |f|
+              = semantic_form_for [@project, Catarse::Reward.new] do |f|
                 = f.input :minimum_value
                 = f.input :description
                 = f.input :maximum_backers
