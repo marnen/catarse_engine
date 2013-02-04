@@ -48,6 +48,6 @@ describe Catarse::LogoUploader do
 
   describe "#store_dir" do
     subject{ @uploader.store_dir }
-    it{ should == "uploads/user/uploaded_image/#{user.id}" }
+    it{ should == "uploads/catarse/user/uploaded_image/#{user.id}" }
   end
 end

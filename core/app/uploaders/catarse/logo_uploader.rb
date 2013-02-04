@@ -43,11 +43,11 @@ class Catarse::LogoUploader < CarrierWave::Uploader::Base
   protected
 
   def is_project? picture
-    model.class.name == 'Project'
+    model.class.name == 'Catarse::Project'
   end
 
   def is_user? picture
-    model.class.name == 'User'
+    model.class.name == 'Catarse::User'
   end
 
 end
