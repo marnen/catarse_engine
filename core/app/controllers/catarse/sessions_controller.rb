@@ -1,6 +1,6 @@
 # coding: utf-8
 module Catarse
-class SessionsController < BaseController
+class SessionsController < Devise::SessionsController
 
   skip_before_filter :detect_locale
 

@@ -1,9 +1,11 @@
 require 'sidekiq/web'
 
 Catarse::Core::Engine.routes.draw do
-  devise_for :users, class_name: "Catarse::User",
-    :controllers => {:registrations => "registrations", :passwords => "passwords"} do
-    get "/login" => "devise/sessions#new"
+
+  devise_for :users,
+    class_name: "Catarse::User",
+    :controllers => {:registrations => "catarse/registrations", :passwords => "catarse/passwords"} do
+    get "/login" => "sessions#new"
   end
 
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
