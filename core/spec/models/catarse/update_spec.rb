@@ -25,20 +25,20 @@ describe Catarse::Update do
 
   describe "#notify_backers" do
     before do
-      Notification.unstub(:create_notification)
+      Catarse::Notification.unstub(:create_notification)
       Factory(:notification_type, :name => 'updates')
       @project = Factory(:project)
       backer = Factory(:backer, :confirmed => true, :project => @project)
       Factory(:backer, :confirmed => true, :project => @project, :user => backer.user)
       @project.reload
       ActionMailer::Base.deliveries = []
-      @update = Update.create!(:user => @project.user, :project => @project, :comment => "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
-      Notification.expects(:create_notification_once).with(:updates, backer.user,
+      @update = Catarse::Update.create!(:user => @project.user, :project => @project, :comment => "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
+      Catarse::Notification.expects(:create_notification_once).with(:updates, backer.user,
         {update_id: @update.id, user_id: backer.user.id},
         :project_name => backer.project.name,
         :project_owner => backer.project.user.display_name,
         :project_owner_email => backer.project.user.email,
-        :from => Configuration[:email_no_reply],
+        :from => Catarse::Configuration[:email_no_reply],
         :update_title => @update.title,
         :update => @update,
         :update_comment => @update.email_comment_html).once

@@ -32,7 +32,7 @@ describe Catarse::User do
   end
 
   describe ".has_credits" do
-    subject{ User.has_credits }
+    subject{ Catarse::User.has_credits }
 
     context "when he has credits in the user_total" do
       before do
@@ -58,7 +58,7 @@ describe Catarse::User do
       p.extra_data = {'payer_email' => 'another_email@bar.com'}
       p.save!
     end
-    subject{ User.by_payer_email 'foo@bar.com' }
+    subject{ Catarse::User.by_payer_email 'foo@bar.com' }
     it{ should == [@u] }
   end
 
@@ -75,7 +75,7 @@ describe Catarse::User do
       b.key = 'def'
       b.save!
     end
-    subject{ User.by_key 'abc' }
+    subject{ Catarse::User.by_key 'abc' }
     it{ should == [@u] }
   end
 
@@ -84,7 +84,7 @@ describe Catarse::User do
       @u = Factory(:user)
       Factory(:user)
     end
-    subject{ User.by_id @u.id }
+    subject{ Catarse::User.by_id @u.id }
     it{ should == [@u] }
   end
 
@@ -93,7 +93,7 @@ describe Catarse::User do
       @u = Factory(:user, :name => 'Foo Bar')
       Factory(:user, :name => 'Baz Qux')
     end
-    subject{ User.by_name 'Bar' }
+    subject{ Catarse::User.by_name 'Bar' }
     it{ should == [@u] }
   end
 
@@ -102,7 +102,7 @@ describe Catarse::User do
       @u = Factory(:user, :email => 'foo@bar.com')
       Factory(:user, :email => 'another_email@bar.com')
     end
-    subject{ User.by_email 'foo@bar' }
+    subject{ Catarse::User.by_email 'foo@bar' }
     it{ should == [@u] }
   end
 
@@ -112,7 +112,7 @@ describe Catarse::User do
   end
 
   describe ".who_backed_project" do
-    subject{ User.who_backed_project(successful_project.id) }
+    subject{ Catarse::User.who_backed_project(successful_project.id) }
     before do
       @backer = Factory(:backer, :confirmed => true, :project => successful_project)
       Factory(:backer, :confirmed => true, :project => successful_project, :user => @backer.user)
@@ -132,17 +132,17 @@ describe Catarse::User do
     end
 
     context "when we call upon user without backs" do
-      subject{ User.where(:id => @u.id).backer_totals }
+      subject{ Catarse::User.where(:id => @u.id).backer_totals }
       it{ should == {:users => 0.0, :backers => 0.0, :backed => 0.0, :credits => 0.0, :credits_table => 0.0} }
     end
 
     context "when we call without scopes" do
-      subject{ User.backer_totals }
+      subject{ Catarse::User.backer_totals }
       it{ should == {:users => 3.0, :backers => 3.0, :backed => 175.0, :credits => 25.0, :credits_table => 10.0} }
     end
 
     context "when we call with scopes" do
-      subject{ User.has_credits.backer_totals }
+      subject{ Catarse::User.has_credits.backer_totals }
       it{ should == {:users => 1.0, :backers => 1.0, :backed => 25.0, :credits => 25.0, :credits_table => 10.0} }
     end
   end
@@ -160,7 +160,7 @@ describe Catarse::User do
         }
       }
     end
-    subject{ User.create_with_omniauth(auth) }
+    subject{ Catarse::User.create_with_omniauth(auth) }
     its(:provider){ should == auth['provider'] }
     its(:uid){ should == auth['uid'] }
     its(:name){ should == auth['info']['name'] }
@@ -191,14 +191,14 @@ describe Catarse::User do
   describe ".find_with_omniauth" do
     let(:primary){ Factory(:user) }
     let(:secondary){ Factory(:user, :primary_user_id => primary.id) }
-    it{ User.find_with_omni_auth(primary.provider, primary.uid).should == primary }
-    it{ User.find_with_omni_auth(secondary.provider, secondary.uid).should == primary }
-    it{ User.find_with_omni_auth(secondary.provider, 'user that does not exist').should == nil }
+    it{ Catarse::User.find_with_omni_auth(primary.provider, primary.uid).should == primary }
+    it{ Catarse::User.find_with_omni_auth(secondary.provider, secondary.uid).should == primary }
+    it{ Catarse::User.find_with_omni_auth(secondary.provider, 'user that does not exist').should == nil }
   end
 
   describe ".create" do
     subject do
-      User.create! do |u|
+      Catarse::User.create! do |u|
         u.provider = 'twitter'
         u.uid = '123'
         u.twitter = '@dbiazus'
@@ -311,7 +311,7 @@ describe Catarse::User do
 
   describe "#merge_into!" do
     it "should merge into another account, taking the credits, backs, projects and notifications with it" do
-      Notification.any_instance.stubs(:send_email)
+      Catarse::Notification.any_instance.stubs(:send_email)
       old_user = Factory(:user)
       new_user = Factory(:user)
       backed_project = Factory(:project)

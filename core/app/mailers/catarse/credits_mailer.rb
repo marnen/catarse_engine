@@ -1,4 +1,5 @@
-class Catarse::CreditsMailer < ActionMailer::Base
+module Catarse
+class CreditsMailer < ActionMailer::Base
   include ERB::Util
 
   def request_refund_from(backer)
@@ -6,4 +7,5 @@ class Catarse::CreditsMailer < ActionMailer::Base
     @user = backer.user
     mail(from: "#{I18n.t('site.name')} <#{Catarse::Configuration[:email_system]}>", to: Catarse::Configuration[:email_payments], :subject => I18n.t('credits_mailer.request_refund_from.subject', :name => @backer.project.name))
   end
+end
 end

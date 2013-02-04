@@ -12,12 +12,12 @@ describe Catarse::ProjectDecorator do
     end
 
     context "when we have a video_thumbnail" do
-      let(:project){ Factory(:project, :image_url => nil, :video_thumbnail => File.open("#{Rails.root}/spec/fixtures/image.png")) }
+      let(:project){ Factory(:project, :image_url => nil, :video_thumbnail => File.open("#{Catarse::Core::Engine.root}/spec/fixtures/image.png")) }
       it{ should == project.video_thumbnail.url }
     end
 
     context "when we have a thumbnail and an image_url" do
-      let(:project){ Factory(:project, :image_url => 'http://test.com/image', :video_thumbnail => File.open("#{Rails.root}/spec/fixtures/image.png")) }
+      let(:project){ Factory(:project, :image_url => 'http://test.com/image', :video_thumbnail => File.open("#{Catarse::Core::Engine.root}/spec/fixtures/image.png")) }
       it{ should == 'http://test.com/image' }
     end
   end

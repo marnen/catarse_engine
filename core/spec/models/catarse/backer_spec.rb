@@ -79,7 +79,7 @@ describe Catarse::Backer do
   describe ".can_refund" do
     before{ valid_refund }
 
-    subject{ Backer.can_refund.all }
+    subject{ Catarse::Backer.can_refund.all }
 
     context "when project is successful" do
       before{ sucessful_project_backer }

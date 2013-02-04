@@ -1,4 +1,5 @@
-class Catarse::BackerObserver < ActiveRecord::Observer
+module Catarse
+class BackerObserver < ActiveRecord::Observer
   def after_create(backer)
     backer.define_key
     backer.define_payment_method
@@ -44,4 +45,5 @@ class Catarse::BackerObserver < ActiveRecord::Observer
       project: backer.project) if backer.project.reached_goal?
   end
 
+end
 end

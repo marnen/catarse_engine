@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Catarse::Project do
-  let(:project){ Project.new :goal => 3000 }
+  let(:project){ Catarse::Project.new :goal => 3000 }
 
   describe "associations" do
     it{ should have_many :backers }
@@ -26,7 +26,7 @@ describe Catarse::Project do
       @project_03 = Factory(:project, online_days: -7, goal: 300, state: 'waiting_funds')
       backer = Factory(:backer, project: @project_03, value: 3000, confirmed: true)
       @project_04 = Factory(:project, online_days: -7, goal: 300, state: 'waiting_funds')
-      Project.finish_projects!
+      Catarse::Project.finish_projects!
       @project_01.reload
       @project_02.reload
       @project_03.reload
@@ -62,51 +62,51 @@ describe Catarse::Project do
       # Another backer with different project and same user but not confirmed should not be in result
       Factory(:backer, user: @user, confirmed: false)
     end
-    subject{ Project.backed_by(@user.id) }
+    subject{ Catarse::Project.backed_by(@user.id) }
     it{ should == [@project] }
   end
 
   describe ".recommended_for_home" do
-    subject{ Project.recommended_for_home }
+    subject{ Catarse::Project.recommended_for_home }
 
     before do
-      Project.expects(:includes).with(:user, :category, :project_total).returns(Project)
-      Project.expects(:recommended).returns(Project)
-      Project.expects(:visible).returns(Project)
-      Project.expects(:not_expired).returns(Project)
-      Project.expects(:order).with('random()').returns(Project)
-      Project.expects(:limit).with(4)
+      Catarse::Project.expects(:includes).with(:user, :category, :project_total).returns(Catarse::Project)
+      Catarse::Project.expects(:recommended).returns(Catarse::Project)
+      Catarse::Project.expects(:visible).returns(Catarse::Project)
+      Catarse::Project.expects(:not_expired).returns(Catarse::Project)
+      Catarse::Project.expects(:order).with('random()').returns(Catarse::Project)
+      Catarse::Project.expects(:limit).with(4)
     end
 
     it{ should be_empty }
   end
 
   describe ".expiring_for_home" do
-    subject{ Project.expiring_for_home(1) }
+    subject{ Catarse::Project.expiring_for_home(1) }
 
     before do
-      Project.expects(:includes).with(:user, :category, :project_total).returns(Project)
-      Project.expects(:visible).returns(Project)
-      Project.expects(:expiring).returns(Project)
-      Project.expects(:order).with('date(expires_at), random()').returns(Project)
-      Project.expects(:where).with("coalesce(id NOT IN (?), true)", 1).returns(Project)
-      Project.expects(:limit).with(3)
+      Catarse::Project.expects(:includes).with(:user, :category, :project_total).returns(Catarse::Project)
+      Catarse::Project.expects(:visible).returns(Catarse::Project)
+      Catarse::Project.expects(:expiring).returns(Catarse::Project)
+      Catarse::Project.expects(:order).with('date(expires_at), random()').returns(Catarse::Project)
+      Catarse::Project.expects(:where).with("coalesce(id NOT IN (?), true)", 1).returns(Catarse::Project)
+      Catarse::Project.expects(:limit).with(3)
     end
 
     it{ should be_empty }
   end
 
   describe ".recent_for_home" do
-    subject{ Project.recent_for_home(1) }
+    subject{ Catarse::Project.recent_for_home(1) }
 
     before do
-      Project.expects(:includes).with(:user, :category, :project_total).returns(Project)
-      Project.expects(:visible).returns(Project)
-      Project.expects(:recent).returns(Project)
-      Project.expects(:not_expiring).returns(Project)
-      Project.expects(:order).with('date(created_at) DESC, random()').returns(Project)
-      Project.expects(:where).with("coalesce(id NOT IN (?), true)", 1).returns(Project)
-      Project.expects(:limit).with(3)
+      Catarse::Project.expects(:includes).with(:user, :category, :project_total).returns(Catarse::Project)
+      Catarse::Project.expects(:visible).returns(Catarse::Project)
+      Catarse::Project.expects(:recent).returns(Catarse::Project)
+      Catarse::Project.expects(:not_expiring).returns(Catarse::Project)
+      Catarse::Project.expects(:order).with('date(created_at) DESC, random()').returns(Catarse::Project)
+      Catarse::Project.expects(:where).with("coalesce(id NOT IN (?), true)", 1).returns(Catarse::Project)
+      Catarse::Project.expects(:limit).with(3)
     end
 
     it{ should be_empty }
@@ -117,7 +117,7 @@ describe Catarse::Project do
       @p = Factory(:project, :online_days => -1)
       Factory(:project, :online_days => 1)
     end
-    subject{ Project.expired}
+    subject{ Catarse::Project.expired}
     it{ should == [@p] }
   end
 
@@ -126,7 +126,7 @@ describe Catarse::Project do
       @p = Factory(:project, :online_days => 1)
       Factory(:project, :online_days => -1)
     end
-    subject{ Project.not_expired }
+    subject{ Catarse::Project.not_expired }
     it{ should == [@p] }
   end
 
@@ -135,7 +135,7 @@ describe Catarse::Project do
       @p = Factory(:project, :online_days => 14)
       Factory(:project, :online_days => -1)
     end
-    subject{ Project.expiring }
+    subject{ Catarse::Project.expiring }
     it{ should == [@p] }
   end
 
@@ -144,7 +144,7 @@ describe Catarse::Project do
       @p = Factory(:project, :online_days => 15)
       Factory(:project, :online_days => -1)
     end
-    subject{ Project.not_expiring }
+    subject{ Catarse::Project.not_expiring }
     it{ should == [@p] }
   end
 
@@ -153,7 +153,7 @@ describe Catarse::Project do
       @p = Factory(:project, :created_at => (Date.today - 14.days))
       Factory(:project, :created_at => (Date.today - 15.days))
     end
-    subject{ Project.recent }
+    subject{ Catarse::Project.recent }
     it{ should == [@p] }
   end
 
@@ -162,7 +162,7 @@ describe Catarse::Project do
       @p = Factory(:project, state: 'online')
       Factory(:project)
     end
-    subject{ Project.online}
+    subject{ Catarse::Project.online}
     it{ should == [@p] }
   end
 
@@ -203,11 +203,11 @@ describe Catarse::Project do
   describe "#pg_search" do
     before { @p = Factory(:project, name: 'foo') }
     context "when project exists" do
-      subject{ [Project.pg_search('foo'), Project.pg_search('fóõ')] }
+      subject{ [Catarse::Project.pg_search('foo'), Catarse::Project.pg_search('fóõ')] }
       it{ should == [[@p],[@p]] }
     end
     context "when project is not found" do
-      subject{ Project.pg_search('lorem') }
+      subject{ Catarse::Project.pg_search('lorem') }
       it{ should == [] }
     end
   end
@@ -266,12 +266,12 @@ describe Catarse::Project do
     subject{ project.expired? }
 
     context "when expires_at is in the future" do
-      let(:project){ Project.new :expires_at => 2.seconds.from_now }
+      let(:project){ Catarse::Project.new :expires_at => 2.seconds.from_now }
       it{ should be_false }
     end
 
     context "when expires_at is in the past" do
-      let(:project){ Project.new :expires_at => 2.seconds.ago }
+      let(:project){ Catarse::Project.new :expires_at => 2.seconds.ago }
       it{ should be_true }
     end
   end
@@ -279,12 +279,12 @@ describe Catarse::Project do
   describe "#in_time?" do
     subject{ project.in_time? }
     context "when expires_at is in the future" do
-      let(:project){ Project.new :expires_at => 2.seconds.from_now }
+      let(:project){ Catarse::Project.new :expires_at => 2.seconds.from_now }
       it{ should be_true }
     end
 
     context "when expires_at is in the past" do
-      let(:project){ Project.new :expires_at => 2.seconds.ago }
+      let(:project){ Catarse::Project.new :expires_at => 2.seconds.ago }
       it{ should be_false }
     end
   end
@@ -331,7 +331,7 @@ describe Catarse::Project do
   describe "#users_who_backed" do
     subject{ project.users_who_backed }
     before do
-      User.expects(:who_backed_project).with(project.id).returns('users')
+      Catarse::User.expects(:who_backed_project).with(project.id).returns('users')
     end
     it{ should == 'users' }
   end
@@ -377,13 +377,13 @@ describe Catarse::Project do
   describe "#download_video_thumbnail" do
     let(:project){ Factory.build(:project) }
     before do
-      Project.any_instance.unstub(:download_video_thumbnail)
-      Project.any_instance.expects(:open).with(project.vimeo.thumbnail).returns(File.open("#{Rails.root}/spec/fixtures/image.png"))
+      Catarse::Project.any_instance.unstub(:download_video_thumbnail)
+      Catarse::Project.any_instance.expects(:open).with(project.vimeo.thumbnail).returns(File.open("#{Catarse::Core::Engine.root}/spec/fixtures/image.png"))
       project.save!
     end
 
     it "should open the video_url and store it in video_thumbnail" do
-      project.video_thumbnail.url.should == "/uploads/project/video_thumbnail/#{project.id}/image.png"
+      project.video_thumbnail.url.should == "/uploads/catarse/project/video_thumbnail/#{project.id}/image.png"
     end
 
   end

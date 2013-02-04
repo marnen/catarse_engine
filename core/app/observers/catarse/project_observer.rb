@@ -1,4 +1,5 @@
-class Catarse::ProjectObserver < ActiveRecord::Observer
+module Catarse
+class ProjectObserver < ActiveRecord::Observer
   def before_save(project)
     #Notification.create_notification(:project_visible, project.user, project: project) if (project.visible_was == false) && (project.visible == true)
     project.download_video_thumbnail if project.video_url.present? && project.video_url_changed?
@@ -59,4 +60,5 @@ class Catarse::ProjectObserver < ActiveRecord::Observer
       project: project) unless project.successful?
     project.update_attributes finished: true, successful: project.successful?
   end
+end
 end

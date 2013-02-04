@@ -1,4 +1,5 @@
-class Catarse::ProjectsMailer < ActionMailer::Base
+module Catarse
+class ProjectsMailer < ActionMailer::Base
   include ERB::Util
 
   def start_project_email(how_much_you_need, days, category, about, rewards, video, facebook,twitter, blog, links, know_us_via, contact, user, user_url)
@@ -18,4 +19,5 @@ class Catarse::ProjectsMailer < ActionMailer::Base
     @user_url = user_url
     mail(:from => "#{I18n.t('site.name')} <#{Catarse::Configuration[:email_system]}>", to: Catarse::Configuration[:email_projects], subject: I18n.t('projects_mailer.start_project_email.subject', :name => @user.name))
   end
+end
 end

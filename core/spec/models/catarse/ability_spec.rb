@@ -2,7 +2,7 @@ require 'spec_helper'
 require "cancan/matchers"
 
 describe Catarse::Ability do
-  subject { Ability.new(user) }
+  subject { Catarse::Ability.new(user) }
 
   context "When user is admin" do
     let(:user) { Factory(:user, admin: true) }

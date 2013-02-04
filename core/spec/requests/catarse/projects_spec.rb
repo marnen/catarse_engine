@@ -8,7 +8,7 @@ describe "Projects" do
   before {
     #NOTE: Weird bug on edit project test
     RoutingFilter.active = true
-    ProjectsController.any_instance.stubs(:last_tweets).returns([])
+    Catarse::ProjectsController.any_instance.stubs(:last_tweets).returns([])
   }
   before{ ::Configuration[:base_url] = 'http://catarse.me' }
 
@@ -70,7 +70,7 @@ describe "Projects" do
       end
       check 'accept'
       click_on 'project_submit'
-      #Project.first.name.should == project.name
+      #Catarse::Project.first.name.should == project.name
     end
   end
 

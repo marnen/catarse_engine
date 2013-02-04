@@ -1,5 +1,6 @@
-class Catarse::NotificationsMailer < ActionMailer::Base
-  layout 'email'
+module Catarse
+class NotificationsMailer < ActionMailer::Base
+  layout 'catarse/email'
 
   def notify(notification)
     @notification = notification
@@ -19,4 +20,5 @@ class Catarse::NotificationsMailer < ActionMailer::Base
     I18n.locale = old_locale if I18n.locale.to_s != @notification.user.locale.to_s
     m
   end
+end
 end

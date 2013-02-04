@@ -7,8 +7,8 @@ describe Catarse::BackerObserver do
   subject{ backer }
 
   before do
-    Notification.unstub(:create_notification)
-    Notification.unstub(:create_notification_once)
+    Catarse::Notification.unstub(:create_notification)
+    Catarse::Notification.unstub(:create_notification_once)
     confirm_backer # It should create the NotificationType before creating the Backer
     project_success
   end
@@ -24,7 +24,7 @@ describe Catarse::BackerObserver do
     context "when payment_choice is updated to BoletoBancario" do
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now) }
       before do
-        Notification.expects(:create_notification).with(:payment_slip, backer.user, :backer => backer, :project_name => backer.project.name)
+        Catarse::Notification.expects(:create_notification).with(:payment_slip, backer.user, :backer => backer, :project_name => backer.project.name)
         backer.payment_choice = 'BoletoBancario'
         backer.save!
       end
@@ -40,7 +40,7 @@ describe Catarse::BackerObserver do
         project_total.stubs(:total_backers).returns(1)
         project.stubs(:project_total).returns(project_total)
         backer.project = project
-        Notification.expects(:create_notification).with(:project_success, backer.project.user, :project => backer.project)
+        Catarse::Notification.expects(:create_notification).with(:project_success, backer.project.user, :project => backer.project)
         backer.save!
       end
       it("should notify the project owner"){ subject }
@@ -50,7 +50,7 @@ describe Catarse::BackerObserver do
       let(:project){ Factory(:project, :successful => true, :finished => false) }
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :project => project) }
       before do
-        Notification.expects(:create_notification).never
+        Catarse::Notification.expects(:create_notification).never
         backer.save!
       end
       it("should not send project_successful notification again"){ subject }
@@ -58,7 +58,7 @@ describe Catarse::BackerObserver do
 
     context "when is not yet confirmed" do
       before do
-        Notification.expects(:create_notification).with(:confirm_backer, backer.user, :backer => backer,  :project_name => backer.project.name)
+        Catarse::Notification.expects(:create_notification).with(:confirm_backer, backer.user, :backer => backer,  :project_name => backer.project.name)
       end
       it("should send confirm_backer notification"){ subject }
       its(:confirmed_at) { should_not be_nil }
@@ -67,7 +67,7 @@ describe Catarse::BackerObserver do
     context "when is already confirmed" do
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now) }
       before do
-        Notification.expects(:create_notification).never
+        Catarse::Notification.expects(:create_notification).never
       end
 
       it("should not send confirm_backer notification again"){ subject }

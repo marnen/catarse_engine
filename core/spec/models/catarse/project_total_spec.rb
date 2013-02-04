@@ -7,12 +7,12 @@ describe Catarse::ProjectTotal do
   end
 
   describe "#pledged" do
-    subject{ ProjectTotal.where(:project_id => @project_id).first.pledged }
+    subject{ Catarse::ProjectTotal.where(:project_id => @project_id).first.pledged }
     it{ should == 10 }
   end
 
   describe "#total_backers" do
-    subject{ ProjectTotal.where(:project_id => @project_id).first.total_backers }
+    subject{ Catarse::ProjectTotal.where(:project_id => @project_id).first.total_backers }
     it{ should == 1 }
   end
 end

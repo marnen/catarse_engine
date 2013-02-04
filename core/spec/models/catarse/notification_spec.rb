@@ -11,8 +11,8 @@ describe Catarse::Notification do
   let(:notification_type){ Factory(:notification_type, name: 'confirm_backer') }
 
   before do
-    Notification.unstub(:create_notification)
-    Notification.unstub(:create_notification_once)
+    Catarse::Notification.unstub(:create_notification)
+    Catarse::Notification.unstub(:create_notification_once)
     ActionMailer::Base.deliveries.clear
   end
 
@@ -32,12 +32,12 @@ describe Catarse::Notification do
   end
 
   describe ".create_notification_once" do
-    let(:create_notification_once){ Notification.create_notification_once(:confirm_backer, backer.user, {user_id: backer.user.id, backer_id: backer.id}, backer: backer,  project_name: backer.project.name) }
+    let(:create_notification_once){ Catarse::Notification.create_notification_once(:confirm_backer, backer.user, {user_id: backer.user.id, backer_id: backer.id}, backer: backer,  project_name: backer.project.name) }
     before{ notification_type }
 
     context "when I have not created the notification with the same type and filters" do
       before do
-        Notification.expects(:create_notification)
+        Catarse::Notification.expects(:create_notification)
       end
       it("should call create_notification"){ create_notification_once }
     end
@@ -45,26 +45,26 @@ describe Catarse::Notification do
     context "when I have already created the notification with the same type but a partially different filter" do
       before do
         create_notification_once
-        Notification.expects(:create_notification)
+        Catarse::Notification.expects(:create_notification)
       end
-      it("should call create_notification"){  Notification.create_notification_once(:confirm_backer, backer.user, {user_id: backer.user.id, backer_id: 0}, backer: backer,  project_name: backer.project.name) }
+      it("should call create_notification"){  Catarse::Notification.create_notification_once(:confirm_backer, backer.user, {user_id: backer.user.id, backer_id: 0}, backer: backer,  project_name: backer.project.name) }
     end
     context "when I have already created the notification with the same type and filters" do
       before do
         create_notification_once
-        Notification.expects(:create_notification).never
+        Catarse::Notification.expects(:create_notification).never
       end
       it("should never call create_notification"){ create_notification_once }
     end
   end
 
   describe ".create_notification" do
-    subject{ Notification.create_notification(:confirm_backer, backer.user, backer: backer,  project_name: backer.project.name) }
+    subject{ Catarse::Notification.create_notification(:confirm_backer, backer.user, backer: backer,  project_name: backer.project.name) }
 
     context "when NotificationType with the provided name exists" do
       before{ notification_type }
       it{ should be_persisted }
-      its(:class){ should == Notification }
+      its(:class){ should == Catarse::Notification }
     end
 
     context "when NotificationType with the provided name does not exist" do
@@ -74,7 +74,7 @@ describe Catarse::Notification do
     context "when an update is provided" do
       let(:update){ Factory(:update) }
       before{ notification_type }
-      subject{ Notification.create_notification(:confirm_backer, backer.user, update: update, backer: backer,  project_name: backer.project.name) }
+      subject{ Catarse::Notification.create_notification(:confirm_backer, backer.user, update: update, backer: backer,  project_name: backer.project.name) }
       it{ should be_persisted }
       its(:project_update){ should == update }
     end
@@ -84,7 +84,7 @@ describe Catarse::Notification do
     before{ notification_type }
 
     context "when NotificationType with the provided name exists" do
-      subject{ Notification.create_notification(:confirm_backer, backer.user, backer: backer,  project_name: backer.project.name) }
+      subject{ Catarse::Notification.create_notification(:confirm_backer, backer.user, backer: backer,  project_name: backer.project.name) }
       its(:dismissed){ should be_true }
       its(:backer){ should == backer }
     end

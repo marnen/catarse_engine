@@ -1,4 +1,5 @@
-class Catarse::PaymentNotificationObserver < ActiveRecord::Observer
+module Catarse
+class PaymentNotificationObserver < ActiveRecord::Observer
   def before_save(payment_notification)
     return unless payment_notification.extra_data
     if payment_notification.extra_data['status_pagamento'] == '6' #payment is being processed
@@ -10,4 +11,5 @@ class Catarse::PaymentNotificationObserver < ActiveRecord::Observer
         payment_method: payment_notification.backer.payment_method)
     end
   end
+end
 end
