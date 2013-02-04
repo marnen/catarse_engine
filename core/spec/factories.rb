@@ -42,7 +42,7 @@ Factory.define :project, :class => Catarse::Project do |f|
   f.video_url 'http://vimeo.com/17298435'
 end
 
-Factory.define :notification_type do |f|
+Factory.define :notification_type, :class => Catarse::NotificationType do |f|
   f.name "confirm_backer"
 end
 
