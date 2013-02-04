@@ -11,12 +11,12 @@ module Catarse
         Rails.application.routes_reloader.reload!
       end
 
-      #config.active_record.observers = ['catarse/backer_observer',
-                                        #'catarse/user_observer',
-                                        #'catarse/notification_observer',
-                                        #'catarse/update_observer',
-                                        #'catarse/project_observer',
-                                        #'catarse/payment_notification_observer']
+      config.active_record.observers = ['catarse/backer_observer',
+                                        'catarse/user_observer',
+                                        'catarse/notification_observer',
+                                        'catarse/update_observer',
+                                        'catarse/project_observer',
+                                        'catarse/payment_notification_observer']
 
     end
   end
