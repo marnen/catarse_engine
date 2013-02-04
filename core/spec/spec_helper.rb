@@ -41,11 +41,19 @@ RSpec.configure do |config|
     Catarse::Calendar.any_instance.stubs(:fetch_events_from)
     Catarse::Blog.stubs(:fetch_last_posts).returns([])
     Catarse::ProjectsController.any_instance.stubs(:last_tweets)
-    [Catarse::Projects::BackersController, Catarse::BackersController, Catarse::UsersController, Catarse::UnsubscribesController, Catarse::ProjectsController, Catarse::ExploreController, Catarse::SessionsController].each do |c|
+
+    [Catarse::Projects::BackersController,
+     Catarse::BackersController,
+     Catarse::UsersController,
+     Catarse::UnsubscribesController,
+     Catarse::ProjectsController,
+     Catarse::ExploreController,
+     Catarse::SessionsController].each do |c|
       c.any_instance.stubs(:render_facebook_sdk)
       c.any_instance.stubs(:render_facebook_like)
       c.any_instance.stubs(:render_twitter)
     end
+
     DatabaseCleaner.clean
     RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
   end
