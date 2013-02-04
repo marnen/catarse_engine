@@ -115,13 +115,13 @@ class ProjectsController < BaseController
   def embed
     @project = Project.find params[:id]
     @title = @project.name
-    render :layout => 'embed'
+    render :layout => 'catarse/embed'
   end
 
   def video_embed
     @project = Project.find params[:id]
     @title = @project.name
-    render :layout => 'embed'
+    render :layout => 'catarse/embed'
   end
 
   private

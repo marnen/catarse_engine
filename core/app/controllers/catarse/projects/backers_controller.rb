@@ -21,7 +21,7 @@ class Projects::BackersController < BaseController
   def new
     return unless require_login
     unless @project.can_back?
-      flash[:failure] = t('projects.back.cannot_back')
+      flash[:failure] = t('catarse.projects.back.cannot_back')
       return redirect_to :root
     end
 
@@ -29,9 +29,9 @@ class Projects::BackersController < BaseController
       review_project_backers_url(@project, {:host => Catarse::Configuration[:secure_review_host], :protocol => 'https'}) :
       review_project_backers_path(@project)
 
-    @title = t('projects.backers.new.title', :name => @project.name)
+    @title = t('catarse.projects.backers.new.title', :name => @project.name)
     @backer = @project.backers.new(:user => current_user)
-    empty_reward = Reward.new(:id => 0, :minimum_value => 0, :description => t('projects.backers.new.no_reward'))
+    empty_reward = Reward.new(:id => 0, :minimum_value => 0, :description => t('catarse.projects.backers.new.no_reward'))
     @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
     @reward = @project.rewards.find params[:reward_id] if params[:reward_id]
     @reward = nil if @reward and @reward.sold_out?
@@ -44,14 +44,14 @@ class Projects::BackersController < BaseController
   def review
     return unless require_login
 
-    @title = t('projects.backers.review.title')
+    @title = t('catarse.projects.backers.review.title')
     params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
     params[:backer][:user_id] = current_user.id
     @project = Project.find params[:project_id]
     @backer = @project.backers.new(params[:backer])
 
     unless @backer.save
-      flash[:failure] = t('projects.backers.review.error')
+      flash[:failure] = t('catarse.projects.backers.review.error')
       return redirect_to new_project_backer_path(@project)
     end
 
@@ -68,7 +68,7 @@ class Projects::BackersController < BaseController
     else
       if backer.credits
         if current_user.credits < backer.value
-          flash[:failure] = t('projects.backers.checkout.no_credits')
+          flash[:failure] = t('catarse.projects.backers.checkout.no_credits')
           return redirect_to new_project_backer_path(backer.project)
         end
         unless backer.confirmed
@@ -77,7 +77,7 @@ class Projects::BackersController < BaseController
           backer.update_attributes({ payment_method: 'Credits' })
           backer.confirm!
         end
-        flash[:success] = t('projects.backers.checkout.success')
+        flash[:success] = t('catarse.projects.backers.checkout.success')
         redirect_to thank_you_path
       end
     end

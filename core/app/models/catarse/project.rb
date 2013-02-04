@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include ActionView::Helpers::UrlHelper
   include ERB::Util
-  include Rails.application.routes.url_helpers
+  include Catarse::Core::Engine.routes.url_helpers
   include PgSearch
 
   before_save do
@@ -216,8 +216,8 @@ class Project < ActiveRecord::Base
       time_to_go: time_to_go,
       remaining_text: remaining_text,
       embed_url: vimeo.embed_url,
-      url: permalink ? Rails.application.routes.url_helpers.project_by_slug_path(permalink, :locale => I18n.locale) : Rails.application.routes.url_helpers.project_path(self, :locale => I18n.locale),
-      full_uri: permalink ? Rails.application.routes.url_helpers.project_by_slug_url(permalink, :locale => I18n.locale) : Rails.application.routes.url_helpers.project_url(self, :locale => I18n.locale),
+      url: permalink ? Catarse::Core::Engine.routes.url_helpers.project_by_slug_path(permalink, :locale => I18n.locale) : Catarse::Core::Engine.routes.url_helpers.project_path(self, :locale => I18n.locale),
+      full_uri: permalink ? Catarse::Core::Engine.routes.url_helpers.project_by_slug_url(permalink, :locale => I18n.locale) : Catarse::Core::Engine.routes.url_helpers.project_url(self, :locale => I18n.locale),
       expired: expired?,
       successful: successful? || reached_goal?,
       waiting_confirmation: waiting_confirmation?,

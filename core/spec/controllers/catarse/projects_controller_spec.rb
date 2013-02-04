@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Catarse::ProjectsController do
-  before{ Notification.unstub(:create_notification) }
+  before{ Catarse::Notification.unstub(:create_notification) }
   before{ controller.stubs(:current_user).returns(current_user) }
   before{ Catarse::Configuration[:base_url] = 'http://catarse.me' }
   render_views
@@ -16,22 +16,22 @@ describe Catarse::ProjectsController do
     end
 
     context "when user is a guest" do
-      it { Project.all.include?(project).should be_true }
+      it { Catarse::Project.all.include?(project).should be_true }
     end
 
     context "when user is a project owner" do
       let(:current_user){ project.user }
-      it { Project.all.include?(project).should be_true }
+      it { Catarse::Project.all.include?(project).should be_true }
     end
 
     context "when user is a registered user" do
       let(:current_user){ Factory(:user, admin: false) }
-      it { Project.all.include?(project).should be_true }
+      it { Catarse::Project.all.include?(project).should be_true }
     end
 
     context "when user is an admin" do
       let(:current_user){ Factory(:user, admin: true) }
-      it { Project.all.include?(project).should be_false }
+      it { Catarse::Project.all.include?(project).should be_false }
     end
   end
 

@@ -44,7 +44,7 @@ describe Catarse::Projects::BackersController do
           @user_backer.credits.to_i.should == 0
           @backer.confirmed.should be_false
 
-          request.flash[:failure].should == I18n.t('projects.backers.checkout.no_credits')
+          request.flash[:failure].should == I18n.t('catarse.projects.backers.checkout.no_credits')
           response.should be_redirect
         end
 
@@ -63,7 +63,7 @@ describe Catarse::Projects::BackersController do
           @user_backer.credits.to_i.should == 90
           @backer.confirmed.should be_true
 
-          request.flash[:success].should == I18n.t('projects.backers.checkout.success')
+          request.flash[:success].should == I18n.t('catarse.projects.backers.checkout.success')
           response.should be_redirect
         end
       end
@@ -90,7 +90,7 @@ describe Catarse::Projects::BackersController do
           :anonymous => '0'
         }}
         request.session[:thank_you_id].should == project.id
-        response.body =~ /#{I18n.t('projects.backers.checkout.title')}/
+        response.body =~ /#{I18n.t('catarse.projects.backers.checkout.title')}/
         response.body =~ /#{project.name}/
         response.body =~ /R\$ 20/
       end
@@ -135,15 +135,15 @@ describe Catarse::Projects::BackersController do
           get :new, {:locale => :pt, :project_id => project.id}
         end
 
-        it{ should render_template("projects/backers/new") }
+        it{ should render_template("catarse/projects/backers/new") }
 
         it "should assign review_project_backers_path to @review_url" do
           assigns(:review_url).should == review_project_backers_path(project)
         end
 
-        its(:body) { should =~ /#{I18n.t('projects.backers.new.header.title')}/ }
-        its(:body) { should =~ /#{I18n.t('projects.backers.new.submit')}/ }
-        its(:body) { should =~ /#{I18n.t('projects.backers.new.no_reward')}/ }
+        its(:body) { should =~ /#{I18n.t('catarse.projects.backers.new.header.title')}/ }
+        its(:body) { should =~ /#{I18n.t('catarse.projects.backers.new.submit')}/ }
+        its(:body) { should =~ /#{I18n.t('catarse.projects.backers.new.no_reward')}/ }
         its(:body) { should =~ /#{project.name}/ }
       end
     end

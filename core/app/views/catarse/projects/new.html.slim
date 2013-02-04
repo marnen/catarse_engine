@@ -18,7 +18,7 @@
                   .important= t('.permalink_important')
               = form.label :permalink, "#{t('activerecord.attributes.project.permalink')} *"
               .input-prepend.permalink
-                span.add-on= "#{::Configuration[:base_url]}/"
+                span.add-on= "#{Catarse::Configuration[:base_url]}/"
                 = form.text_field :permalink, :class => 'permalink'
                 p.inline-hints
                   = t('.permalink_hint')
@@ -56,7 +56,7 @@
                 .alert
                   .important= t('.tags_important', :href => "http://www.catarse.me/explore").html_safe
               = form.label :category, t('.category')
-              = form.select :category_id, Category.array
+              = form.select :category_id, Catarse::Category.array
               p.inline-hints= t('formtastic.hints.project.category')
 
             .input

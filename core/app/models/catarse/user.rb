@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
 
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
-  include Rails.application.routes.url_helpers
+  include Catarse::Core::Engine.routes.url_helpers
   extend Memoist
 
   mount_uploader :uploaded_image, LogoUploader
@@ -220,11 +220,11 @@ class User < ActiveRecord::Base
 
   def backs_text
     if total_backs == 2
-      I18n.t('user.backs_text.two')
+      I18n.t('catarse.user.backs_text.two')
     elsif total_backs > 1
-      I18n.t('user.backs_text.many', :total => (total_backs-1))
+      I18n.t('catarse.user.backs_text.many', :total => (total_backs-1))
     else
-      I18n.t('user.backs_text.one')
+      I18n.t('catarse.user.backs_text.one')
     end
   end
 

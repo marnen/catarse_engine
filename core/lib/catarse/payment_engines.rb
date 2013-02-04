@@ -9,6 +9,7 @@ class Catarse::PaymentEngines
   end
 
   def self.engines
+    @@engines ||= []
     @@engines.sort{|a,b| (a[:locale] == I18n.locale.to_s ? -1 : 1) }
   end
 end
