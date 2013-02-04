@@ -22,7 +22,7 @@
           .small (#{current_user.display_credits})
         li.divider
         - if current_user.admin?
-          - for menu, path in Adm::BaseController.menu do
+          - for menu, path in Catarse::Adm::BaseController.menu do
             li= link_to menu, path
         li.divider
         li= link_to t('layouts.catarse.user.logout'), logout_path
