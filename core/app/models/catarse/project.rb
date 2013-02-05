@@ -31,7 +31,7 @@ class Project < ActiveRecord::Base
   has_one :project_total
   accepts_nested_attributes_for :rewards
 
-  has_vimeo_video :video_url, :message => I18n.t('project.vimeo_regex_validation')
+  has_vimeo_video :video_url, :message => I18n.t('catarse.project.vimeo_regex_validation')
 
   auto_html_for :about do
     html_escape :map => {
