@@ -4,8 +4,17 @@ Catarse::Core::Engine.routes.draw do
 
   devise_for :users,
     class_name: "Catarse::User",
-    :controllers => {:registrations => "catarse/registrations", :passwords => "catarse/passwords"} do
-    get "/login" => "sessions#new"
+    :module => :devise,
+    :controllers => { :registrations => "catarse/registrations",
+                      :passwords => "catarse/passwords",
+                      :sessions => "catarse/sessions" }
+
+  devise_scope :user do
+    get "/login", :to => "sessions#new"
+    post "/auth" => "sessions#auth", :as => :auth
+    match "/auth/:provider/callback" => "sessions#create"
+    match "/auth/failure" => "sessions#failure"
+    match "/logout" => "sessions#destroy", :as => :logout
   end
 
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
@@ -37,16 +46,10 @@ Catarse::Core::Engine.routes.draw do
   match "/faq" => "static#faq", :as => :faq
   match "/terms" => "static#terms", :as => :terms
   match "/privacy" => "static#privacy", :as => :privacy
-
   match "/thank_you" => "payment_stream#thank_you", :as => :thank_you
   match "/explore" => "explore#index", :as => :explore
   match "/explore#:quick" => "explore#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
-
-  post "/auth" => "sessions#auth", :as => :auth
-  match "/auth/:provider/callback" => "sessions#create"
-  match "/auth/failure" => "sessions#failure"
-  match "/logout" => "sessions#destroy", :as => :logout
   match "/reward/:id" => "rewards#show", :as => :reward
   resources :posts, only: [:index, :create]
 

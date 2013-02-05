@@ -1,6 +1,6 @@
 # coding: utf-8
 module Catarse
-class BaseController < ActionController::Base
+class BaseController < ApplicationController
   layout 'catarse/application'
 
   protect_from_forgery

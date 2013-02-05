@@ -198,6 +198,7 @@ pt:
         backed: levantados
         reached: atingido
     devise:
+      not_found_in_database: 'Email ou senha invalidos.'
       confirmations:
         confirmed: "Sua conta foi confirmada com sucesso. Você está logado a partir de agora."
         send_instructions: "Você receberá um email com instruções sobre como confirmar a sua conta em poucos minutos."

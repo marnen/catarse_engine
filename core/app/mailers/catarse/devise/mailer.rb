@@ -2,7 +2,7 @@ class Devise::Mailer < ::ActionMailer::Base
   layout 'email'
   include Devise::Mailers::Helpers
 
-  def confirmation_instructions(record)
+  def confirmation_instructions(record, opts={})
     devise_mail(record, :confirmation_instructions)
   end
 
