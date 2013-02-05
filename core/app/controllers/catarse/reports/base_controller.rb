@@ -1,5 +1,5 @@
 module Catarse
-class Reports::BaseController < ApplicationController
+class Reports::BaseController < Catarse::BaseController
   inherit_resources
   responders :csv
   respond_to :csv

@@ -1,5 +1,5 @@
 module Catarse
-class Reports::BackerReportsForProjectOwnersController < Reports::BaseController
+class Reports::BackerReportsForProjectOwnersController < Catarse::Reports::BaseController
   before_filter :check_if_project_belongs_to_user
 
   def end_of_association_chain
