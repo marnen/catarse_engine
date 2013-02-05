@@ -93,57 +93,6 @@ en:
     "no": "No"
     "yes": "Yes"
     accept_terms_html: "I have read and accepted the %{link}."
-    activerecord:
-      errors:
-        models:
-          user:
-            attributes:
-              email:
-                not_found: "Your email is not registered, please verify the address or create a new account"
-      attributes:
-        unsubscribe:
-          update: "Receive project updates"
-        backer:
-          value: Value
-        project:
-          category: Category
-          expires_at: Deadline
-          online_days: Days of the air campaign
-          headline: "Punch Line"
-          image_url: "Image URL"
-          name: Name
-          user_id: "User Id"
-          video_url: "Video URL"
-          permalink: 'type you project URL ( http://catarse.me/myprojectname )'
-          how_know: "How did you meet Catarse?"
-          more_linkt: 'Where can we find more about you and your project?'
-        reward:
-          description: Description
-          maximum_backers: "Maximum backers"
-          minimum_value: "Minimum value"
-        user:
-          address_city: City
-          address_complement: Complement
-          address_neighbourhood: Neighbourhood
-          address_number: Number
-          address_state: State
-          address_street: Street
-          address_zip_code: "Zip code"
-          cpf: 'CPF / CNPJ'
-          moip_login: 'MoIP Login'
-          moip_login_hint: '(How to create an account)'
-          current_password: "Current password"
-          email: Email
-          full_name: "Full name / Company Name"
-          name: Nickname
-          password: Password
-          password_confirmation: "Password Confirmation"
-          phone_number: "Mobile phone number"
-      models:
-        backer: Backer
-        category: Category
-        project: Project
-        reward: Reward
     backer:
       display_confirmed_at: "%{time_ago} ago"
       reward_must_be_from_project: "must be from the same project"
@@ -187,69 +136,6 @@ en:
       show:
         backed: backed
         reached: reached
-    devise:
-      not_found_in_database: 'Invalid email or password.'
-      confirmations:
-        confirmed: "Your account was successfully confirmed. You are now signed in."
-        send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-        send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
-      failure:
-        already_authenticated: "You are already signed in."
-        inactive: "Your account was not activated yet."
-        invalid: "Invalid email or password."
-        invalid_token: "Invalid authentication token."
-        locked: "Your account is locked."
-        timeout: "Your session expired, please sign in again to continue."
-        unauthenticated: "You need to sign up or sign in to continue."
-        unconfirmed: "You have to confirm your account before continuing."
-      links:
-        forgot_password: "Forgot your password?"
-        sign_in: "Sign in"
-        sign_up: "Sign up"
-      mailer:
-        confirmation_instructions:
-          subject: "Confirmation instructions"
-        reset_password_instructions:
-          subject: "Reset password instructions"
-          alt: "Reset password instructions"
-        unlock_instructions:
-          subject: "Unlock Instructions"
-      omniauth_callbacks:
-        failure: "Could not authorize you from %{kind} because \"%{reason}\"."
-        success: "Successfully authorized from %{kind} account."
-      passwords:
-        send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
-        send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
-        updated: "Your password was changed successfully. You are now signed in."
-        updated_not_active: "Your password was changed successfully."
-      registrations:
-        destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
-        inactive_signed_up: "You have signed up successfully. However, we could not sign you in because your account is %{reason}."
-        reasons:
-          inactive: inactive
-          locked: locked
-          unconfirmed: unconfirmed
-        signed_up: "Welcome! You have signed up successfully."
-        updated: "You updated your account successfully."
-      sessions:
-        new:
-          site_title: "Sign in"
-          submit: "Sign in"
-          title: "Sign in using your email"
-          login_title: Login
-          login_subtitle: "If already have an account"
-          register_title: "Sign Up"
-          register_subtitle: "Use your e-mail account"
-          with_facebook: "Sign in with your facebook account"
-          with_facebook_subtitle: "A quick way to access"
-          with_another_social: "Don't have facebook account?"
-          with_another_social_subtitle: "Sign in with another social network"
-        signed_in: "Signed in successfully."
-        signed_out: "Signed out successfully."
-      unlocks:
-        send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
-        send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
-        unlocked: "Your account was successfully unlocked. You are now signed in."
     error: "Ooops! There was an error. Please try again."
     explore:
       index:
@@ -822,3 +708,118 @@ en:
       updates:
         subject: "If the league! Update of %{project_name} by %{project_owner}: %{update_title}"
         text: "%{update_title}<br />%{update_text}<br />Comments? Send it on in the project page: <a href='%{project_link}'>%{project_name}</a>."
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: "Your email is not registered, please verify the address or create a new account"
+    attributes:
+      unsubscribe:
+        update: "Receive project updates"
+      backer:
+        value: Value
+      project:
+        category: Category
+        expires_at: Deadline
+        online_days: Days of the air campaign
+        headline: "Punch Line"
+        image_url: "Image URL"
+        name: Name
+        user_id: "User Id"
+        video_url: "Video URL"
+        permalink: 'type you project URL ( http://catarse.me/myprojectname )'
+        how_know: "How did you meet Catarse?"
+        more_linkt: 'Where can we find more about you and your project?'
+      reward:
+        description: Description
+        maximum_backers: "Maximum backers"
+        minimum_value: "Minimum value"
+      user:
+        address_city: City
+        address_complement: Complement
+        address_neighbourhood: Neighbourhood
+        address_number: Number
+        address_state: State
+        address_street: Street
+        address_zip_code: "Zip code"
+        cpf: 'CPF / CNPJ'
+        moip_login: 'MoIP Login'
+        moip_login_hint: '(How to create an account)'
+        current_password: "Current password"
+        email: Email
+        full_name: "Full name / Company Name"
+        name: Nickname
+        password: Password
+        password_confirmation: "Password Confirmation"
+        phone_number: "Mobile phone number"
+    models:
+      backer: Backer
+      category: Category
+      project: Project
+      reward: Reward
+  devise:
+    not_found_in_database: 'Invalid email or password.'
+    confirmations:
+      confirmed: "Your account was successfully confirmed. You are now signed in."
+      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+      send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
+    failure:
+      already_authenticated: "You are already signed in."
+      inactive: "Your account was not activated yet."
+      invalid: "Invalid email or password."
+      invalid_token: "Invalid authentication token."
+      locked: "Your account is locked."
+      timeout: "Your session expired, please sign in again to continue."
+      unauthenticated: "You need to sign up or sign in to continue."
+      unconfirmed: "You have to confirm your account before continuing."
+    links:
+      forgot_password: "Forgot your password?"
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+    mailer:
+      confirmation_instructions:
+        subject: "Confirmation instructions"
+      reset_password_instructions:
+        subject: "Reset password instructions"
+        alt: "Reset password instructions"
+      unlock_instructions:
+        subject: "Unlock Instructions"
+    omniauth_callbacks:
+      failure: "Could not authorize you from %{kind} because \"%{reason}\"."
+      success: "Successfully authorized from %{kind} account."
+    passwords:
+      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
+      send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
+      updated: "Your password was changed successfully. You are now signed in."
+      updated_not_active: "Your password was changed successfully."
+    registrations:
+      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      inactive_signed_up: "You have signed up successfully. However, we could not sign you in because your account is %{reason}."
+      reasons:
+        inactive: inactive
+        locked: locked
+        unconfirmed: unconfirmed
+      signed_up: "Welcome! You have signed up successfully."
+      updated: "You updated your account successfully."
+    sessions:
+      new:
+        site_title: "Sign in"
+        submit: "Sign in"
+        title: "Sign in using your email"
+        login_title: Login
+        login_subtitle: "If already have an account"
+        register_title: "Sign Up"
+        register_subtitle: "Use your e-mail account"
+        with_facebook: "Sign in with your facebook account"
+        with_facebook_subtitle: "A quick way to access"
+        with_another_social: "Don't have facebook account?"
+        with_another_social_subtitle: "Sign in with another social network"
+      signed_in: "Signed in successfully."
+      signed_out: "Signed out successfully."
+    unlocks:
+      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
+      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
+      unlocked: "Your account was successfully unlocked. You are now signed in."
+
