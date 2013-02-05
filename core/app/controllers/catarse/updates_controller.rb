@@ -5,7 +5,7 @@ class UpdatesController < BaseController
 
   actions :index, :create, :destroy
   respond_to :html, :only => [ :index, :create, :destroy ]
-  belongs_to :project
+  belongs_to :project, :parent_class => Project
 
   def index
     index! do |format|

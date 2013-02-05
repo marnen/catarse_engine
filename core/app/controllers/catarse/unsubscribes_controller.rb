@@ -1,7 +1,7 @@
 module Catarse
 class UnsubscribesController < BaseController
   inherit_resources
-  belongs_to :user
+  belongs_to :user, :parent_class => User
 
   def create
     params[:user][:unsubscribes_attributes].each_value do |u|
