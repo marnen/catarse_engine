@@ -1,4 +1,4 @@
-class Devise::Mailer < ::ActionMailer::Base
+class Catarse::Devise::Mailer < ::ActionMailer::Base
   layout 'catarse/email'
   include Devise::Mailers::Helpers
 
@@ -6,11 +6,11 @@ class Devise::Mailer < ::ActionMailer::Base
     devise_mail(record, :confirmation_instructions)
   end
 
-  def reset_password_instructions(record)
+  def reset_password_instructions(record, opts={})
     devise_mail(record, :reset_password_instructions)
   end
 
-  def unlock_instructions(record)
+  def unlock_instructions(record, opts={})
     devise_mail(record, :unlock_instructions)
   end
 end
