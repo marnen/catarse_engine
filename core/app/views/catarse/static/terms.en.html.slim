@@ -6,9 +6,9 @@
         h1 Terms of Use
         h2 Carefully read the terms of use. Site usage implies acceptance of these terms.
       .text.default_text
-        p Welcome to #{Configuration[:company_name]}! It's worth it to remind you that access to the content of this website depends on your full agreement with the terms and conditions set forth herein.
+        p Welcome to #{Catarse::Configuration[:company_name]}! It's worth it to remind you that access to the content of this website depends on your full agreement with the terms and conditions set forth herein.
         p This Terms of Use presents the "General Conditions" applied to the use of the services offered by GRUPO COMUM CONSULTORIA E INTERMEDIAÇÃO DE NEGÓCIOS LTDA - ME, limited company, registered under CNPJ n. º 14.512.425/0001-94, hereinafter "CATARSE".
-        h2 What is #{Configuration[:company_name]}?
+        h2 What is #{Catarse::Configuration[:company_name]}?
         p CATARSE is an online COLLECTIVE FUNDRAISING  platform ("crowd funding"), to fund creative projects. CATARSE allows a CREATOR to submit an idea for a creative project and raise funds from BACKERS interested in funding it.
         p When a project is successful, reaching or exceeding the amount requested, the total raised is passed from the BACKERS on to the CREATOR, and it is discounted due to the percentage charged by the platform and the tariffs charged by the online payment services. Conversely, if a project is not successful, failing to reach the amount requested, the BACKERS get back the value of their contributions through credit at CATARSE or  trough refund.
         p CATARSE only approximates PROJECT CREATORS and BACKERS. Using CATARSE does not generate employment relationship, association or society among users and CATARSE, nor represents business transaction or sale of products or services.
@@ -40,7 +40,7 @@
         p The user is solely responsible for the security of his/her username and password. It is through these data that the user can access and change personal information and other data from his/her registration.
         p
           | If there is any suspicion of misuse or unauthorized use of your account, you should immediately notify CATARSE  by e-mail:
-          = mail_to Configuration[:email_contact]
+          = mail_to Catarse::Configuration[:email_contact]
           |.
         p CATARSE obligates itself not to use the registration information provided by the user to conduct any illegal activities, but only for those expressly permitted by Brazilian law and/or this agreement.
         p YOU agree to:

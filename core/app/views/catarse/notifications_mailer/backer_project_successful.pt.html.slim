@@ -8,7 +8,7 @@ br
 |O projeto teve, incluindo você, #{backer.project.total_backers} maravilhosos apoiadores, arrecadou #{backer.project.display_pledged} e atingiu #{backer.project.progress}% da meta da captação =D
 br
 br
-|Ahh, uma informação importante: a equipe do #{Configuration[:company_name]} leva até 3 dias úteis para passar a lista de contato de todos os apoiadores para os produtores do projeto. Por isso, o realizador entrará em contato contigo para agradecimentos e pra falar sobre as recompensas só daqui alguns dias, ok?
+|Ahh, uma informação importante: a equipe do #{Catarse::Configuration[:company_name]} leva até 3 dias úteis para passar a lista de contato de todos os apoiadores para os produtores do projeto. Por isso, o realizador entrará em contato contigo para agradecimentos e pra falar sobre as recompensas só daqui alguns dias, ok?
 br
 br
 |Enquanto isso, compartilhe com todo mundo este sucesso!
@@ -37,10 +37,10 @@ strong
 |Se quiser entrar em contato com #{backer.project.user.name}, mande um email para #{mail_to backer.project.user.email}
 br
 br
-|Se tiver alguma outra dúvida, acesse nosso #{link_to('FAQ', "#{Catarse::Configuration[:base_url]}/faq")} ou mande um email para o #{mail_to Configuration[:mail_contact]}
+|Se tiver alguma outra dúvida, acesse nosso #{link_to('FAQ', "#{Catarse::Configuration[:base_url]}/faq")} ou mande um email para o #{mail_to Catarse::Configuration[:mail_contact]}
 br
 br
 |Um grande abraço,
 br
 br
-|Equipe do #{Configuration[:company_name]}
+|Equipe do #{Catarse::Configuration[:company_name]}
