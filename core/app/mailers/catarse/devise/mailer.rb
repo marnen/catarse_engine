@@ -1,5 +1,5 @@
 class Devise::Mailer < ::ActionMailer::Base
-  layout 'email'
+  layout 'catarse/email'
   include Devise::Mailers::Helpers
 
   def confirmation_instructions(record, opts={})
