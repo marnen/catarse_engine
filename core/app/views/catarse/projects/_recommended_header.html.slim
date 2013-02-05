@@ -10,9 +10,9 @@
   .project_info
     - if current_user
       - if @recommended_project
-        = render :partial => "project_header", :locals => {:title => t('projects.recommended_header.sugest_for_you'), :project => @recommended_project} if @recommended_project
+        = render :partial => "project_header", :locals => {:title => t('catarse.projects.recommended_header.sugest_for_you'), :project => @recommended_project} if @recommended_project
       - else
-        = render :partial => "project_header", :locals => {:title => t('projects.recommended_header.highlight_project'), :project => @fourth_project} if @fourth_project
+        = render :partial => "project_header", :locals => {:title => t('catarse.projects.recommended_header.highlight_project'), :project => @fourth_project} if @fourth_project
     - else
-      = render :partial => "project_header", :locals => {:title => t('projects.recommended_header.highlight_project'), :project => @fourth_project} if @fourth_project
+      = render :partial => "project_header", :locals => {:title => t('catarse.projects.recommended_header.highlight_project'), :project => @fourth_project} if @fourth_project
   .clearfix

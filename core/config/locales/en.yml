@@ -2,8 +2,6 @@ en:
   site:
     name: Catarse
     title: "The first crowdfunding platform from Brazil"
-
-
   layouts:
     catarse:
       login:
@@ -150,47 +148,6 @@ en:
       title: "Explore the projects"
       project:
         empty: "Hey, we didn't find any project with the text you searched. Wanna try some new words? =D"
-    formtastic:
-      hints:
-        backer:
-          credits: "You have <strong>%{credits}</strong> in credits and can back with up to this amount without needing to make a new payment."
-          value: "You chose the amount ;) starting with R$10, any amount is great."
-        project:
-          video_url_edit: 'Paste here the URL of your video at vimeo.com'
-          about: "Tell us about what inspired you to come up with this project . Be objective end charming, present your readers with something that moves them while being very transparent over the expectations on your project!"
-          category: "Before you format your project explore other (successful) projects to inspire yourself!"
-          expires_at: "Finally, choose how long you want your campaign to last. Again, this is a strategic choice: if you put a lot of time, people will lose interest along the way; if put too little, you may not reach the minimum in time."
-          online_days: "Finally, choose how long you want your campaign to last. Again, this is a strategic choice: if you put a lot of time, people will lose interest along the way; if put too little, you may not reach the minimum in time."
-          goal: "Values in reais (R$)"
-          headline: "Summarize your project in 140 characters. This sentence will be the first contact people will have with your project, before even seeing the video. Be creative, clear and direct :)"
-          name: "Be as objective as you can. Leave explanations for the About section."
-          uploaded_image: "Upload a 220x172 image(.jpg)."
-          video_url: "Paste the URL from a <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a> video. We chose Vimeo because it looks better and doesn't have ads. This way, your project will look better too! <strong>Produce your video the best you can and make a video specifically for your campaign</strong>. If there is a single thing that differentiates the projects that reach the goal from the others is the video. Observe ;)"
-        reward:
-          description: "Describe your reward in a way that arouses people's interest to back the project. Don't be shy!"
-          maximum_backers: "If your reward is limited, tell us the maximum backers."
-          minimum_value: "This is the minimum amount to choose this reward."
-      labels:
-        backer:
-          anonymous: "I want my back to be anonymous."
-          credits: "I want to use my credits on this back."
-          reward: "Select your reward"
-          value: "How much do you want to contribute with?"
-        comment:
-          comment: "Leave your comment about this project"
-        project:
-          headline: "Punch Line"
-          category: 'Category'
-          about: "About your project. How will you spend this money?"
-          expires_at: "What's the deadline to reach your goal?"
-          goal: "How much do you intend to raise? (use only numbers)"
-          name: "Project's Name"
-          online_days: 'How Many Campaign Days?'
-          video_url: Video
-          uploaded_image: "Project thumbnail"
-        reward:
-          maximum_backers: "Maximum backers (optional)"
-      optional: " (optional)"
     found_plural: Found
     found_singular: Found
     here: here
@@ -711,16 +668,16 @@ en:
   activerecord:
     errors:
       models:
-        user:
+        'catarse/user':
           attributes:
             email:
               not_found: "Your email is not registered, please verify the address or create a new account"
     attributes:
-      unsubscribe:
+      'catarse/unsubscribe':
         update: "Receive project updates"
-      backer:
+      'catarse/backer':
         value: Value
-      project:
+      'catarse/project':
         category: Category
         expires_at: Deadline
         online_days: Days of the air campaign
@@ -732,11 +689,11 @@ en:
         permalink: 'type you project URL ( http://catarse.me/myprojectname )'
         how_know: "How did you meet Catarse?"
         more_linkt: 'Where can we find more about you and your project?'
-      reward:
+      'catarse/reward':
         description: Description
         maximum_backers: "Maximum backers"
         minimum_value: "Minimum value"
-      user:
+      'catarse/user':
         address_city: City
         address_complement: Complement
         address_neighbourhood: Neighbourhood
@@ -755,10 +712,10 @@ en:
         password_confirmation: "Password Confirmation"
         phone_number: "Mobile phone number"
     models:
-      backer: Backer
-      category: Category
-      project: Project
-      reward: Reward
+      'catarse/backer': Backer
+      'catarse/category': Category
+      'catarse/project': Project
+      'catarse/reward': Reward
   devise:
     not_found_in_database: 'Invalid email or password.'
     confirmations:
@@ -822,4 +779,45 @@ en:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
       unlocked: "Your account was successfully unlocked. You are now signed in."
+  formtastic:
+    hints:
+      backer:
+        credits: "You have <strong>%{credits}</strong> in credits and can back with up to this amount without needing to make a new payment."
+        value: "You chose the amount ;) starting with R$10, any amount is great."
+      project:
+        video_url_edit: 'Paste here the URL of your video at vimeo.com'
+        about: "Tell us about what inspired you to come up with this project . Be objective end charming, present your readers with something that moves them while being very transparent over the expectations on your project!"
+        category: "Before you format your project explore other (successful) projects to inspire yourself!"
+        expires_at: "Finally, choose how long you want your campaign to last. Again, this is a strategic choice: if you put a lot of time, people will lose interest along the way; if put too little, you may not reach the minimum in time."
+        online_days: "Finally, choose how long you want your campaign to last. Again, this is a strategic choice: if you put a lot of time, people will lose interest along the way; if put too little, you may not reach the minimum in time."
+        goal: "Values in reais (R$)"
+        headline: "Summarize your project in 140 characters. This sentence will be the first contact people will have with your project, before even seeing the video. Be creative, clear and direct :)"
+        name: "Be as objective as you can. Leave explanations for the About section."
+        uploaded_image: "Upload a 220x172 image(.jpg)."
+        video_url: "Paste the URL from a <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a> video. We chose Vimeo because it looks better and doesn't have ads. This way, your project will look better too! <strong>Produce your video the best you can and make a video specifically for your campaign</strong>. If there is a single thing that differentiates the projects that reach the goal from the others is the video. Observe ;)"
+      reward:
+        description: "Describe your reward in a way that arouses people's interest to back the project. Don't be shy!"
+        maximum_backers: "If your reward is limited, tell us the maximum backers."
+        minimum_value: "This is the minimum amount to choose this reward."
+    labels:
+      backer:
+        anonymous: "I want my back to be anonymous."
+        credits: "I want to use my credits on this back."
+        reward: "Select your reward"
+        value: "How much do you want to contribute with?"
+      comment:
+        comment: "Leave your comment about this project"
+      project:
+        headline: "Punch Line"
+        category: 'Category'
+        about: "About your project. How will you spend this money?"
+        expires_at: "What's the deadline to reach your goal?"
+        goal: "How much do you intend to raise? (use only numbers)"
+        name: "Project's Name"
+        online_days: 'How Many Campaign Days?'
+        video_url: Video
+        uploaded_image: "Project thumbnail"
+      reward:
+        maximum_backers: "Maximum backers (optional)"
+    optional: " (optional)"
 

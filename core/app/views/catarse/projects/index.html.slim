@@ -5,41 +5,41 @@
       .selected_projects.list
         .list_title
           .title
-            h2= t('sections.selection.title')
+            h2= t('catarse.sections.selection.title')
         .projects
           = render :partial => 'project', :locals => {:project => @first_project, :custom_class => 'first' } if @first_project
           = render :partial => 'project', :locals => {:project => @second_project } if @second_project
           = render :partial => 'project', :locals => {:project => @third_project, :custom_class => 'last' } if @third_project
         .explore_link
           hr
-          = link_to t('main.links.selected'), explore_path()+"#recommended"
+          = link_to t('catarse.main.links.selected'), explore_path()+"#recommended"
 
       .expiring_projects.list
         .list_title
           .title
-            h2= t('sections.expiring.title')
+            h2= t('catarse.sections.expiring.title')
         .projects
           - @expiring.each_with_index do |item,i|
             == render 'project', :project => item, :custom_class => ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
         .explore_link
           hr
-          = link_to t('main.links.expiring'), explore_path()+'#expiring'
+          = link_to t('catarse.main.links.expiring'), explore_path()+'#expiring'
 
       .recents_projects.list
         .list_title
           .title
-            h2= t('sections.recents.title')
+            h2= t('catarse.sections.recents.title')
         .projects
           - @recent.each_with_index do |item,i|
             == render 'project', :project => item, :custom_class => ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
         .explore_link
           hr
-          = link_to t('main.links.recents'), explore_path()+'#recent'
+          = link_to t('catarse.main.links.recents'), explore_path()+'#recent'
 
     .sidebar
       .content
         .blog
-          h3= t('sidebar.titles.blog')
+          h3= t('catarse.sidebar.titles.blog')
           ul.posts
             - @blog_posts.each do |post|
               li
@@ -47,12 +47,12 @@
                   = link_to post.url, target: '__blank' do
                     /= image_tag("catarse/post_title_image.png")
                     = truncate(post.title, length: 80)
-                p.author= "#{t('projects.box.by')} #{post.author}"
+                p.author= "#{t('catarse.projects.box.by')} #{post.author}"
                 = link_to post.url, target: '__blank', class: 'resume' do
                   = truncate(post.summary, length: 130).html_safe
 
         .facebook
-          h3= t('sidebar.titles.facebook')
+          h3= t('catarse.sidebar.titles.facebook')
           .fb-like data-href="#{Catarse::Configuration['facebook_url']}" data-send="false" data-width="171" data-show-faces="true"
         .twitter
           h3= "@#{Catarse::Configuration['twitter_username']}"
@@ -60,9 +60,9 @@
             p= tweet['text']
           = link_to "Follow @#{Catarse::Configuration['twitter_username']}", "http://twitter.com/#{Catarse::Configuration['twitter_username']}", :class => 'twitter-follow-button', :"data-show-count" => "false" , :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
         .newsletter
-          h3= t('sidebar.titles.newsletter')
+          h3= t('catarse.sidebar.titles.newsletter')
           = form_tag Catarse::Configuration['mailchimp_url'], id: 'mailee-form', method: 'post' do
             = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
-            = submit_tag t('sidebar.buttons.newsletter')
+            = submit_tag t('catarse.sidebar.buttons.newsletter')
     .clearfix
 

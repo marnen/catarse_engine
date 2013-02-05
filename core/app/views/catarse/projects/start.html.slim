@@ -33,7 +33,7 @@
             .input
               = image_tag "catarse/icon_tag.png", :class => 'tag'
               = label_tag 'category', t('.category')
-              = select_tag 'category', options_from_collection_for_select(Category.all, "name", "name"), include_blank: true
+              = select_tag 'category', options_from_collection_for_select(Catarse::Category.all, "name", "name"), include_blank: true
               .bootstrap-alert
                 span
                 .alert
@@ -112,7 +112,7 @@
             fieldset.accept
               = check_box_tag 'accept'
               |  
-              = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, target: '_blank')), :class => 'inline'
+              = label_tag 'accept', t('catarse.accept_terms_html', :link => link_to(t('catarse.terms'), terms_path, target: '_blank')), :class => 'inline'
             fieldset
               .bootstrap-twitter
                 .send

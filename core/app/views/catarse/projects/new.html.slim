@@ -76,7 +76,7 @@
               = form.label :online_days, t('formtastic.labels.project.expires_at')
               .input-append
                 = form.text_field :online_days
-                span.add-on= t('days')
+                span.add-on= t('catarse.days')
               p.inline-hints= t('formtastic.hints.project.online_days')
 
             .input
@@ -120,7 +120,7 @@
             .submit
               fieldset.accept
                 = check_box_tag 'accept'
-                = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
+                = label_tag 'accept', t('catarse.accept_terms_html', :link => link_to(t('catarse.terms'), terms_path, :target => :_blank)), :class => 'inline'
               fieldset
                 .bootstrap-twitter
                   .send

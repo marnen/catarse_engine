@@ -6,7 +6,7 @@
     = link_to project.name, project_path(project)
   .author
     p
-      = t('projects.box.by')
+      = t('catarse.projects.box.by')
       |&nbsp;
       = link_to project.user.name, user_path(project.user)
   .description
@@ -28,7 +28,7 @@
         p= "#{project.remaining_text}"
       li
         strong= "#{project.progress}%"
-        p="#{t('projects.project.reached')}"
+        p="#{t('catarse.projects.project.reached')}"
       li.last
         strong= "#{project.display_pledged}"
-        p= "#{t('projects.project.backed')}"
+        p= "#{t('catarse.projects.project.backed')}"

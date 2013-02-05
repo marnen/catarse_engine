@@ -1,6 +1,6 @@
 .media_content_update
   - if @project.updates.empty?
-    em = t('projects.project_updates.empty')
+    em = t('catarse.projects.project_updates.empty')
   - else
     ul.collection_list
       - for update in @project.updates.order('created_at DESC')

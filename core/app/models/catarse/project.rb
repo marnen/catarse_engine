@@ -190,7 +190,7 @@ class Project < ActiveRecord::Base
   end
 
   def remaining_text
-    pluralize_without_number(time_to_go[:time], I18n.t('remaining_singular'), I18n.t('remaining_plural'))
+    pluralize_without_number(time_to_go[:time], I18n.t('catarse.remaining_singular'), I18n.t('catarse.remaining_plural'))
   end
 
   def download_video_thumbnail
@@ -226,7 +226,7 @@ class Project < ActiveRecord::Base
       successful: successful? || reached_goal?,
       waiting_confirmation: waiting_confirmation?,
       waiting_funds: waiting_funds?,
-      display_status_to_box: display_status.blank? ? nil : I18n.t("project.display_status.#{display_status}"),
+      display_status_to_box: display_status.blank? ? nil : I18n.t("catarse.projects.back_project.display_status.#{display_status}"),
       display_expires_at: display_expires_at,
       in_time: in_time?
     }
