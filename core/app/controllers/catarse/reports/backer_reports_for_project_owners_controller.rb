@@ -1,3 +1,4 @@
+module Catarse
 class Reports::BackerReportsForProjectOwnersController < Reports::BaseController
   before_filter :check_if_project_belongs_to_user
 
@@ -12,4 +13,5 @@ class Reports::BackerReportsForProjectOwnersController < Reports::BaseController
   def check_if_project_belongs_to_user
     can? :update, Project.find(params[:project_id])
   end
+end
 end

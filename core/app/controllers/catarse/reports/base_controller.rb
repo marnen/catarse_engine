@@ -1,3 +1,4 @@
+module Catarse
 class Reports::BaseController < ApplicationController
   inherit_resources
   responders :csv
@@ -5,4 +6,5 @@ class Reports::BaseController < ApplicationController
   actions :index
 
   before_filter :require_login
+end
 end
