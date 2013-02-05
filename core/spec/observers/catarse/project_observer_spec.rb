@@ -30,6 +30,7 @@ describe Catarse::ProjectObserver do
       Catarse::ProjectObserver.any_instance.unstub(:after_create)
       Catarse::Configuration[:facebook_url] = 'http://facebook.com'
       Catarse::Configuration[:blog_url] = 'http://blog.com'
+      Catarse::Configuration[:company_name] = 'Catarse'
       user
       project
     end

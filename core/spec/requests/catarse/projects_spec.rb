@@ -10,7 +10,10 @@ describe "Projects" do
     RoutingFilter.active = true
     Catarse::ProjectsController.any_instance.stubs(:last_tweets).returns([])
   }
-  before{ Catarse::Configuration[:base_url] = 'http://catarse.me' }
+  before {
+    Catarse::Configuration[:base_url] = 'http://catarse.me'
+    Catarse::Configuration[:company_name] = 'Catarse'
+  }
 
   describe "home" do
     before do

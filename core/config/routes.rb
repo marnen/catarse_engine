@@ -49,6 +49,11 @@ Catarse::Core::Engine.routes.draw do
   match "/logout" => "sessions#destroy", :as => :logout
   match "/reward/:id" => "rewards#show", :as => :reward
   resources :posts, only: [:index, :create]
+
+  namespace :reports do
+    resources :backer_reports_for_project_owners, only: [:index]
+  end
+
   resources :projects do
     resources :updates, only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy ]
