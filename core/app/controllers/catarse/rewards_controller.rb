@@ -1,6 +1,6 @@
 module Catarse
 class RewardsController < BaseController
-  load_and_authorize_resource
+  load_and_authorize_resource :class => :reward
   inherit_resources
   actions :index, :create, :update, :destroy
   respond_to :html, :json
