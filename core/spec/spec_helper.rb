@@ -2,6 +2,9 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
+require 'selenium-webdriver'
+require 'selenium-client'
+require 'capybara'
 require 'sidekiq/testing'
 require 'factory_girl_rails'
 require 'database_cleaner'
@@ -15,6 +18,7 @@ RSpec.configure do |config|
   config.mock_with :mocha
   config.include Factory::Syntax::Methods
   config.include ActionView::Helpers::TextHelper
+  config.include Capybara::DSL, :type => :request
   config.before(:each, :type => :controller) { @routes = Catarse::Core::Engine.routes }
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
