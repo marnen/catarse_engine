@@ -33,7 +33,7 @@
             = f.input :address_neighbourhood, :as => :string
             = f.input :address_zip_code, :as => :string, :input_html => {:autocomplete => 'off'}
             = f.input :address_city, :as => :string
-            = f.input :address_state, :as => :select, :collection => State.array
+            = f.input :address_state, :as => :select, :collection => Catarse::State.array
           .socialmidia
             .div
               = f.label :twitter, t('.twitter')

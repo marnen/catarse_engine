@@ -16,7 +16,7 @@ describe Catarse::Credits::Refund do
       subject.expects(:check_can_refund)
       subject.make_request!
       @backer.requested_refund.should be_true
-      subject.message.should == I18n.t('credits.index.refunded')
+      subject.message.should == I18n.t('catarse.credits.index.refunded')
     end
 
     context "when user doesn't have the necessary value" do
@@ -24,7 +24,7 @@ describe Catarse::Credits::Refund do
 
         lambda {
           subject.make_request!
-        }.should raise_exception(I18n.t('credits.refund.no_credits'))
+        }.should raise_exception(I18n.t('catarse.credits.refund.no_credits'))
       end
     end
 
@@ -35,7 +35,7 @@ describe Catarse::Credits::Refund do
 
         lambda {
           subject.make_request!
-        }.should raise_exception(I18n.t('credits.refund.refunded'))
+        }.should raise_exception(I18n.t('catarse.credits.refund.refunded'))
       end
     end
     context "when backer already requested to refund" do
@@ -45,7 +45,7 @@ describe Catarse::Credits::Refund do
 
         lambda {
           subject.make_request!
-        }.should raise_exception(I18n.t('credits.refund.requested_refund'))
+        }.should raise_exception(I18n.t('catarse.credits.refund.requested_refund'))
       end
     end
   end

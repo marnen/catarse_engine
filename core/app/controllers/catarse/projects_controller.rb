@@ -3,7 +3,7 @@ module Catarse
 class ProjectsController < BaseController
   include ActionView::Helpers::DateHelper
 
-  load_and_authorize_resource only: [ :update, :destroy ]
+  load_and_authorize_resource :project, only: [ :update, :destroy ]
 
   inherit_resources
   respond_to :html, :except => [:backers]
@@ -31,6 +31,7 @@ class ProjectsController < BaseController
         @blog_posts = blog_posts
         @events = events
         @last_tweets = last_tweets
+        @last_tweets = [] if @last_tweets.nil?
       end
 
       format.json do

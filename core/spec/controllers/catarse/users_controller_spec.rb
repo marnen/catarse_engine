@@ -44,7 +44,7 @@ describe Catarse::UsersController do
     context "with user" do
       context "when current_user request to refund your backer" do
         before do
-          request.session[:user_id]=user.id
+          request.session[:user_id] = user.id
         end
 
         it "success requested" do

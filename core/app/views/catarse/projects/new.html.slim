@@ -16,7 +16,7 @@
                 span
                 .alert
                   .important= t('.permalink_important')
-              = form.label :permalink, "#{t('activerecord.attributes.project.permalink')} *"
+              = form.label :permalink, "#{t('activerecord.attributes.catarse/project.permalink')} *"
               .input-prepend.permalink
                 span.add-on= "#{Catarse::Configuration[:base_url]}/"
                 = form.text_field :permalink, :class => 'permalink'

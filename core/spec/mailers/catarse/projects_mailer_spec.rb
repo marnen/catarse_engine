@@ -15,7 +15,7 @@ describe Catarse::ProjectsMailer do
     know_us_via = "My friends\n<javascript>"
     contact = "foo@bar.com"
     user = Factory(:user)
-    email = ProjectsMailer.start_project_email(how_much_you_need, days, category, about, rewards, video, facebook, twitter, blog, links, know_us_via, contact, user, "#{Catarse::Configuration[:base_url]}#{user_path(user)}").deliver
+    email = Catarse::ProjectsMailer.start_project_email(how_much_you_need, days, category, about, rewards, video, facebook, twitter, blog, links, know_us_via, contact, user, "#{Catarse::Configuration[:base_url]}#{Catarse::Core::Engine.routes.url_helpers.user_path(user)}").deliver
     ActionMailer::Base.deliveries.should_not be_empty
     email_body = email.encoded.gsub(/=\r\n/, '')
     email_body.should =~ /1000 &lt;javascript&gt;/

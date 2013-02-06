@@ -1,7 +1,7 @@
 # coding: utf-8
 module Catarse
 class UsersController < BaseController
-  load_and_authorize_resource except: [:update_attribute_on_the_spot, :projects]
+  load_and_authorize_resource :user, except: [:update_attribute_on_the_spot, :projects]
   inherit_resources
   actions :show, :update, :unsubscribe_update
   respond_to :json, :only => [:backs, :projects, :request_refund]
@@ -32,12 +32,14 @@ class UsersController < BaseController
   end
 
   def credits
+    #authorize! :credits, current_user
     @user = User.find(params[:id])
     @credits = @user.backs.can_refund.order(:id).all
     render :json => @credits
   end
 
   def request_refund
+    #authorize! :request_refund, current_user
     back = Backer.find(params[:back_id])
     begin
       if can? :request_refund, back

@@ -6,10 +6,11 @@ class Ability
   def initialize(current_user)
     current_user ||= User.new
 
-    alias_subject :'catarse/projects', :to => :projects
-    alias_subject :'catarse/rewards', :to => :rewards
-    alias_subject :'catarse/updates', :to => :updates
-    alias_subject :'catarse/users', :to => :users
+    alias_subject :'catarse/projects', to: :projects
+    alias_subject :'catarse/rewards', to: :rewards
+    alias_subject :'catarse/updates', to: :updates
+    alias_subject :'catarse/users', to: :users
+    alias_subject :'catarse/backers', to: :backers
 
     can :read, :all
 
