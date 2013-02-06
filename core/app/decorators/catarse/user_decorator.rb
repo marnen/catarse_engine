@@ -6,7 +6,7 @@ class UserDecorator < Draper::Base
   def display_provider
     case provider
     when 'devise' then "Login #{email}"
-    when 'google' then I18n.t('user.google_account')
+    when 'google' then I18n.t('catarse.user.google_account')
     else provider
     end
   end
@@ -17,7 +17,7 @@ class UserDecorator < Draper::Base
     elsif full_name.present?
       full_name
     else
-      I18n.t('user.no_name')
+      I18n.t('catarse.user.no_name')
     end
   end
 

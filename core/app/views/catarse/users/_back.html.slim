@@ -3,9 +3,9 @@ script type="text/template" id="user_backs_template"
 
 script type="text/template" id="empty_user_back_template"
   - if current_user != @user
-    p.empty= t('users.backs.no_backs', name: @user.display_name)
+    p.empty= t('catarse.users.backs.no_backs', name: @user.display_name)
   - else
-    p.empty= t('users.backs.no_backs_current_user_html', link: Catarse::Configuration[:base_url])
+    p.empty= t('catarse.users.backs.no_backs_current_user_html', link: Catarse::Configuration[:base_url])
 
 script type="text/template" id="user_back_template"
   div class=(current_user == @user ? 'project_land' : 'small_project_land')
@@ -28,7 +28,7 @@ script type="text/template" id="user_back_template"
         h4
           a href='<%= project["url"] %>'
             | <%= project['name'] %>
-        p.author== "#{t('project_by')} <%= project['user']['name'] %>"
+        p.author== "#{t('catarse.project_by')} <%= project['user']['name'] %>"
         p.headline <%= project['headline'] %>
       .status_bar
         .progress style="width: <%= project['display_progress'] %>%;"
@@ -43,10 +43,10 @@ script type="text/template" id="user_back_template"
           |<% } %>
         li
           h6 <%= project['progress'] %>%
-          p= t('projects.project.backed')
+          p= t('catarse.projects.project.backed')
         li
           h6 <%= project['pledged'] %>
-          p= t('projects.project.reached')
+          p= t('catarse.projects.project.reached')
     - if current_user == @user
       div.back_info
         ul
@@ -62,8 +62,8 @@ script type="text/template" id="user_back_template"
             p <%= reward['description']%>
           |<% } %>
       .tell_about
-        p= t('tell_about_this_back')
+        p= t('catarse.tell_about_this_back')
         ul
-          li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=<%= encodeURIComponent(project['full_uri']) %>&t=#{t('share_my_backs')}<%= encodeURIComponent(project['name']) %>".html_safe, :target => '_blank'
-          li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_backs')}<%= encodeURIComponent(project['name']) %>&url=<%= encodeURIComponent(project['full_uri']) %>".html_safe, :target => '_blank'
+          li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=<%= encodeURIComponent(project['full_uri']) %>&t=#{t('catarse.share_my_backs')}<%= encodeURIComponent(project['name']) %>".html_safe, :target => '_blank'
+          li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('catarse.share_my_backs')}<%= encodeURIComponent(project['name']) %>&url=<%= encodeURIComponent(project['full_uri']) %>".html_safe, :target => '_blank'
   .clearfix

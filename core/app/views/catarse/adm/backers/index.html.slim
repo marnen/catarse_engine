@@ -49,9 +49,9 @@
               = f.label :refunded_is_true, t('.refunded')
             .input.total_results
               #total_results
-                = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
+                = pluralize_without_number @search.count, t('catarse.found_singular'), t('catarse.found_plural')
                 strong= @search.count
-                = pluralize_without_number(@search.count, t('backer_singular'), t('backer_plural')).downcase
+                = pluralize_without_number(@search.count, t('catarse.backer_singular'), t('catarse.backer_plural')).downcase
       .clearfix
       = paginate @backers
       - if @backers.empty?
@@ -89,8 +89,8 @@
                       |-
                   td.key= backer.key
                   td= check_box_tag "anonymous__#{backer.id}", '1', backer.anonymous
-                  td= (backer.credits ? t('yes') : t('no'))
-                  td= (backer.requested_refund ? t('yes') : t('no'))
+                  td= (backer.credits ? t('catarse.yes') : t('catarse.no'))
+                  td= (backer.requested_refund ? t('catarse.yes') : t('catarse.no'))
                   td= check_box_tag "refunded__#{backer.id}", '1', backer.refunded
                   td.bootstrap-twitter
                     .btn-group
@@ -98,9 +98,9 @@
                         span.caret
                       ul.dropdown-menu
                         - if backer.confirmed
-                          li= link_to t('adm.backers.index.unconfirm_backer'), unconfirm_adm_backer_path(backer), method: :put
+                          li= link_to t('catarse.adm.backers.index.unconfirm_backer'), unconfirm_adm_backer_path(backer), method: :put
                         - else
-                          li= link_to t('adm.backers.index.confirm_backer'), confirm_adm_backer_path(backer), method: :put
+                          li= link_to t('catarse.adm.backers.index.confirm_backer'), confirm_adm_backer_path(backer), method: :put
       = paginate @backers
   .clearfix
     

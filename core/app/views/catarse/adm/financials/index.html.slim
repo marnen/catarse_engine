@@ -25,9 +25,9 @@
           fieldset
             .input.total_results
               #total_results
-                = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
+                = pluralize_without_number @search.count, t('catarse.found_singular'), t('catarse.found_plural')
                 strong= @search.count
-                = pluralize_without_number(@search.count, t('project_singular'), t('project_plural')).downcase
+                = pluralize_without_number(@search.count, t('catarse.project_singular'), t('catarse.project_plural')).downcase
       .clearfix
     .data-table
       = paginate @projects

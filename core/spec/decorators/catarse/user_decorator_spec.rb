@@ -21,7 +21,7 @@ describe Catarse::UserDecorator do
 
     context "when we have no name" do
       let(:user){ Factory(:user, :name => nil, :nickname => nil) }
-      it{ should == I18n.t('user.no_name') }
+      it{ should == I18n.t('catarse.user.no_name') }
     end
   end
 

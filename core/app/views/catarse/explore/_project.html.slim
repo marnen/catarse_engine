@@ -29,7 +29,7 @@ script type="text/template" id="project_template"
           a href="<%= url %>" itemprop="url"
             | <%= name %>
         p.author
-          = "#{t('projects.box.by')} "
+          = "#{t('catarse.projects.box.by')} "
           span[itemprop="author"] <%= user['name'] %>
         p.description[itemprop="description"]
           | <%= headline %>
@@ -55,8 +55,8 @@ script type="text/template" id="project_template"
             | <% } %>
           li
             h6 <%= pledged %>
-            p=t('projects.project.backed')
+            p=t('catarse.projects.project.backed')
 
           li
             h6 <%= progress %> %
-            p= t('projects.project.reached')
+            p= t('catarse.projects.project.reached')

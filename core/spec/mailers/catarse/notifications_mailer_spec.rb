@@ -10,7 +10,7 @@ describe Catarse::NotificationsMailer do
     Catarse::NotificationsMailer.any_instance.expects(:mail).at_least_once.with({
       :from => "#{I18n.t('site.name')} <#{Catarse::Configuration[:email_contact]}>",
       :to => notification.user.email,
-      :subject => I18n.t('notifications.confirm_backer.subject', :project_name => notification.project.name),
+      :subject => I18n.t('catarse.notifications.confirm_backer.subject', :project_name => notification.project.name),
       :template_name => 'confirm_backer'
     })
   end

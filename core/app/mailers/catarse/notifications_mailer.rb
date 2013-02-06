@@ -9,8 +9,8 @@ class NotificationsMailer < ActionMailer::Base
     from_email = ( @notification.mail_params && @notification.mail_params[:from] ) || Catarse::Configuration['email_contact']
     address = Mail::Address.new from_email
     address.display_name = I18n.t('site.name')
-    subject = I18n.t("notifications.#{@notification.notification_type.name}.subject", @notification.mail_params)
-    @header = I18n.t("notifications.#{@notification.notification_type.name}.header", @notification.mail_params, :default => subject)
+    subject = I18n.t("catarse.notifications.#{@notification.notification_type.name}.subject", @notification.mail_params)
+    @header = I18n.t("catarse.notifications.#{@notification.notification_type.name}.header", @notification.mail_params, :default => subject)
     m = mail({
       :from => address.format,
       :to => @notification.user.email,

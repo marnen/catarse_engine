@@ -2,19 +2,19 @@ module Catarse
 class Adm::BackersController < Catarse::Adm::BaseController
   inherit_resources
   can_edit_on_the_spot
-  menu I18n.t("adm.backers.index.menu") => Catarse::Core::Engine.routes.url_helpers.adm_backers_path
+  menu I18n.t("catarse.dm.backers.index.menu") => Catarse::Core::Engine.routes.url_helpers.adm_backers_path
   before_filter :set_title
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
 
   def confirm
     resource.confirm!
-    flash[:notice] = I18n.t('adm.backers.messages.successful.confirm')
+    flash[:notice] = I18n.t('catarse.adm.backers.messages.successful.confirm')
     redirect_to adm_backers_path
   end
 
   def unconfirm
     resource.unconfirm!
-    flash[:notice] = I18n.t('adm.backers.messages.successful.unconfirm')
+    flash[:notice] = I18n.t('catarse.adm.backers.messages.successful.unconfirm')
     redirect_to adm_backers_path
   end
 
@@ -26,7 +26,7 @@ class Adm::BackersController < Catarse::Adm::BaseController
     backer_admin_fields = ["confirmed", "requested_refund", "refunded", "anonymous", "user_id"]
     reward_fields = []
     reward_admin_fields = ["description"]
-    def render_error; render :text => t('require_permission'), :status => 422; end
+    def render_error; render :text => t('catarse.require_permission'), :status => 422; end
     return render_error unless current_user
     klass, field, id = params[:id].split('__')
     return render_error unless klass == 'project' or klass == 'backer' or klass == 'reward'
@@ -46,7 +46,7 @@ class Adm::BackersController < Catarse::Adm::BaseController
   end
 
   def set_title
-    @title = t("adm.backers.index.title")
+    @title = t("catarse.adm.backers.index.title")
   end
 
   def collection

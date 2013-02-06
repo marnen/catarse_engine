@@ -1,7 +1,7 @@
 module Catarse
 class Adm::ProjectsController < Catarse::Adm::BaseController
   inherit_resources
-  menu I18n.t("adm.projects.index.menu") => Catarse::Core::Engine.routes.url_helpers.adm_projects_path
+  menu I18n.t("catarse.adm.projects.index.menu") => Catarse::Core::Engine.routes.url_helpers.adm_projects_path
 
   has_scope :by_id, :pg_search, :user_name_contains, :order_table
 

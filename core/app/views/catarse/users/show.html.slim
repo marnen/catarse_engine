@@ -66,18 +66,18 @@
             = render 'current_user_fields'
           #user_credits.content.hide
             .current_credits
-              p= t('credits.index.current_credits_html', :credits => @user.display_credits)
+              p= t('catarse.credits.index.current_credits_html', :credits => @user.display_credits)
 
             .table_title
-              p= I18n.t('credits.index.refunds_title')
+              p= I18n.t('catarse.credits.index.refunds_title')
             .table_content
               table.table.table-striped
                 thead
-                  th= t('credits.index.project')
-                  th= t('credits.index.back_date')
-                  th= t('credits.index.value')
-                  th= t('credits.index.refund_expration_date')
-                  th= t('credits.index.status')
+                  th= t('catarse.credits.index.project')
+                  th= t('catarse.credits.index.back_date')
+                  th= t('catarse.credits.index.value')
+                  th= t('catarse.credits.index.refund_expration_date')
+                  th= t('catarse.credits.index.status')
                 - @credits.each do |credit|
                   tr[id="back_#{credit.id}"]
                     td.project_name
@@ -87,14 +87,14 @@
                     td.term= I18n.l(credit.refund_deadline.to_date)
                     td.status
                       - if credit.requested_refund
-                        = t('credits.index.requested_refund')
+                        = t('catarse.credits.index.requested_refund')
                       - elsif credit.refunded
-                        = t('credits.index.refunded')
+                        = t('catarse.credits.index.refunded')
                       - else
                         - if can? :request_refund, credit
-                          = link_to t('credits.index.request_refund'), "#request_refund/#{credit.id}", :class => 'link_project'
+                          = link_to t('catarse.credits.index.request_refund'), "#request_refund/#{credit.id}", :class => 'link_project'
             .bootstrap-alert
               .alert.alert-info
-                = t('credits.index.important_html')
+                = t('catarse.credits.index.important_html')
       #loading= image_tag "loading.gif"
     .clearfix

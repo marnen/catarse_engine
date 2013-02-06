@@ -60,21 +60,21 @@ class Backer < ActiveRecord::Base
 
   def reward_must_be_from_project
     return unless reward
-    errors.add(:reward, I18n.t('backer.reward_must_be_from_project')) unless reward.project == project
+    errors.add(:reward, I18n.t('catarse.backer.reward_must_be_from_project')) unless reward.project == project
   end
 
   validate :value_must_be_at_least_rewards_value
 
   def value_must_be_at_least_rewards_value
     return unless reward
-    errors.add(:value, I18n.t('backer.value_must_be_at_least_rewards_value', :minimum_value => reward.display_minimum)) unless value >= reward.minimum_value
+    errors.add(:value, I18n.t('catarse.backer.value_must_be_at_least_rewards_value', :minimum_value => reward.display_minimum)) unless value >= reward.minimum_value
   end
 
   validate :should_not_back_if_maximum_backers_been_reached, :on => :create
 
   def should_not_back_if_maximum_backers_been_reached
     return unless reward and reward.maximum_backers and reward.maximum_backers > 0
-    errors.add(:reward, I18n.t('backer.should_not_back_if_maximum_backers_been_reached')) unless reward.backers.confirmed.count < reward.maximum_backers
+    errors.add(:reward, I18n.t('catarse.backer.should_not_back_if_maximum_backers_been_reached')) unless reward.backers.confirmed.count < reward.maximum_backers
   end
 
   def display_value
@@ -98,9 +98,9 @@ class Backer < ActiveRecord::Base
   end
 
   def cancel_refund_request!
-    raise I18n.t('credits.cannot_cancel_refund_reques') unless self.requested_refund
-    raise I18n.t('credits.refund.refunded') if self.refunded
-    raise I18n.t('credits.refund.no_credits') unless self.user.credits >= self.value
+    raise I18n.t('catarse.credits.cannot_cancel_refund_reques') unless self.requested_refund
+    raise I18n.t('catarse.credits.refund.refunded') if self.refunded
+    raise I18n.t('catarse.credits.refund.no_credits') unless self.user.credits >= self.value
     self.update_attributes({ requested_refund: false })
     self.user.update_attributes({ credits: (self.user.credits + self.value) })
   end
