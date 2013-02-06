@@ -4,6 +4,8 @@ require 'spec_helper'
 
 describe "Users" do
   before do
+    #NOTE: Weird bug on edit user test
+    RoutingFilter.active = true
     Factory(:notification_type, name: 'updates')
   end
 
