@@ -24,7 +24,9 @@ Catarse::Core::Engine.routes.draw do
 
   # Non production routes
   if Rails.env == "test"
-    match "/fake_login" => "sessions#fake_create", :as => :fake_login
+    devise_scope :user do
+      match "/fake_login" => "sessions#fake_create", :as => :fake_login
+    end
   elsif Rails.env == "development"
     resources :emails, :only => [ :index ]
   end
