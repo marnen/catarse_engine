@@ -58,6 +58,7 @@ describe "Projects" do
   describe "new and create" do
     before do
       visit fake_login_path
+      @category = Factory(:category)
       visit new_project_path(:locale => :pt)
     end
 
@@ -70,6 +71,8 @@ describe "Projects" do
       ].each do |a|
         fill_in "project_#{a}", with: project.attributes[a]
       end
+      select(@category.name, :from => "project_category_id")
+
       check 'accept'
       click_on 'project_submit'
       #Catarse::Project.first.name.should == project.name
