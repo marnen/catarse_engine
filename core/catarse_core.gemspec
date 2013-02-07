@@ -85,7 +85,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'has_vimeo_video', '~> 0.0.5'
   s.add_dependency 'memoist', '~> 0.2.0'
   s.add_dependency 'wirble'
-  s.add_dependency "on_the_spot"
   s.add_dependency 'weekdays'
   s.add_dependency 'brcep'
   s.add_dependency "RedCloth"

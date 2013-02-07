@@ -52,7 +52,6 @@ require 'validates_email'
 require 'has_vimeo_video'
 require 'weekdays'
 require 'unicode'
-require "on_the_spot"
 require "rack-timeout"
 
 # Translations
