@@ -12,13 +12,23 @@ class SessionsController < Devise::SessionsController
 
   def create
     auth = request.env["omniauth.auth"]
-    user = User.find_with_omni_auth(auth["provider"], auth["uid"].to_s)
-    unless user
+    user = User.find_with_omni_auth(auth["provider"], auth["uid"].to_s) if auth
+    if auth and not user
       user = User.create_with_omniauth(auth)
       if session[:return_to].nil? or session[:return_to].empty?
         session[:return_to] = user_path(user)
       end
+    else
+      user = User.find_for_authentication(:email => params[:user][:email])
+
+      if user and user.valid_password?(params[:user][:password])
+        sign_in(:user, user)
+      else
+        flash[:error] = t('catarse.sessions.failure.error')
+        return redirect_to login_path
+      end
     end
+
     session[:user_id] = user.id
     if session[:remember_me]
       cookies[:remember_me_id] = { :value => user.id, :expires => 30.days.from_now }
@@ -29,7 +39,7 @@ class SessionsController < Devise::SessionsController
   end
 
   def destroy
-    return redirect_to destroy_user_session_path if current_user and current_user.provider == 'devise'
+    sign_out current_user if current_user.provider == 'devise'
     session[:user_id] = nil
     cookies.delete :remember_me_id if cookies[:remember_me_id]
     cookies.delete :remember_me_hash if cookies[:remember_me_hash]
