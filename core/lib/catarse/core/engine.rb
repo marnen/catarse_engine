@@ -5,6 +5,10 @@ module Catarse
 
       YAML::ENGINE.yamler = 'syck' if defined?(YAML::ENGINE)
 
+      initializer :assets do |config|
+        Rails.application.config.assets.precompile += %w( catarse.js catarse.css )
+      end
+
       config.autoload_paths += %W(#{config.root}/lib #{config.root}/lib/** #{config.root}/app/presenters #{config.root}/app/presenters/** #{config.root}/app/business/ #{config.root}/app/business/**)
 
       config.after_initialize do
