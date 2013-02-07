@@ -17,7 +17,7 @@ class ProjectsMailer < ActionMailer::Base
     @contact = contact
     @user = user
     @user_url = user_url
-    mail(:from => "#{I18n.t('site.name')} <#{Catarse::Configuration[:email_system]}>", to: Catarse::Configuration[:email_projects], subject: I18n.t('catarse.projects_mailer.start_project_email.subject', :name => @user.name))
+    mail(:from => "#{Catarse::Configuration[:company_name]} <#{Catarse::Configuration[:email_system]}>", to: Catarse::Configuration[:email_projects], subject: I18n.t('catarse.projects_mailer.start_project_email.subject', :name => @user.name))
   end
 end
 end

@@ -195,6 +195,7 @@ describe Catarse::Backer do
 
   describe "#display_platform_fee" do
     before(:each) do
+      I18n.locale = :pt
       @backer = create(:backer, :value => 100)
     end
 

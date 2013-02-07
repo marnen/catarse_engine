@@ -48,7 +48,7 @@ Catarse::Core::Engine.routes.draw do
   match "/faq" => "static#faq", :as => :faq
   match "/terms" => "static#terms", :as => :terms
   match "/privacy" => "static#privacy", :as => :privacy
-  match "/thank_you" => "payment_stream#thank_you", :as => :thank_you
+
   match "/explore" => "explore#index", :as => :explore
   match "/explore#:quick" => "explore#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
@@ -67,8 +67,9 @@ Catarse::Core::Engine.routes.draw do
         post 'review'
       end
       member do
-        match 'checkout'
+        match 'credits_checkout'
         post 'update_info'
+        get 'thank_you'
       end
     end
     collection do
@@ -76,7 +77,6 @@ Catarse::Core::Engine.routes.draw do
       post 'send_mail'
       get 'vimeo'
       get 'check_slug'
-      get 'thank_you'
       post 'update_attribute_on_the_spot'
     end
     member do

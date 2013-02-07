@@ -23,6 +23,6 @@ describe Catarse::ProjectsMailer do
     email_body.should =~ /Rewards of the project\<br\>&lt;javascript&gt;/
     email_body.should =~ /Links of the project\<br\>&lt;javascript&gt;/
     email_body.should =~ /foo@bar.com/
-    email[:from].to_s.should == "#{I18n.t('site.name')} <#{Catarse::Configuration[:email_system]}>"
+    email[:from].to_s.should == "#{Catarse::Configuration[:company_name]} <#{Catarse::Configuration[:email_system]}>"
   end
 end
