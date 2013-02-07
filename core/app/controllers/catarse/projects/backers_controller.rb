@@ -19,10 +19,10 @@ class Projects::BackersController < BaseController
 
   def thank_you
     unless resource.user == current_user
-      flash[:failure] = I18n.t('payment_stream.thank_you.error')
+      flash[:failure] = I18n.t('caatarse.projects.backers.thank_you.error')
       return redirect_to :root
     end
-    @title = t('projects.backers.thank_you.title')
+    @title = t('catarse.projects.backers.thank_you.title')
   end
 
   def new
@@ -72,14 +72,14 @@ class Projects::BackersController < BaseController
     end
 
     if current_user.credits < @backer.value
-      flash[:failure] = t('projects.backers.checkout.no_credits')
+      flash[:failure] = t('catarse.projects.backers.checkout.no_credits')
       return redirect_to new_project_backer_path(@backer.project)
     end
     unless @backer.confirmed
       @backer.update_attributes({ payment_method: 'Credits' })
       @backer.confirm!
     end
-    flash[:success] = t('projects.backers.checkout.success')
+    flash[:success] = t('catarse.projects.backers.checkout.success')
     redirect_to thank_you_project_backer_path(project_id: parent.id, id: resource.id)
   end
 end

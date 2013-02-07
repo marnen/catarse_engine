@@ -17,7 +17,7 @@
       meta property="og:url" content=project_by_slug_url(@project.permalink, :locale => I18n.locale)
   meta property="og:type" content='cause'
   meta property="og:image" content=@project.display_image
-  meta property="og:site_name" content=::Configuration[:company_name]
+  meta property="og:site_name" content=Catarse::Configuration[:company_name]
   meta property="fb:admins" content="#{fb_admins}"
 
 #page_content
