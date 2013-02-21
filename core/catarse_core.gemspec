@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   #s.requirements << 'none'
 
-  s.add_dependency 'rails', '~> 3.2.11'
+  s.add_dependency 'rails', '~> 3.2.12'
 
   s.add_dependency 'sidekiq', '= 2.4.0'
   s.add_dependency 'sinatra'#, require: false
@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   #s.add_dependency 'catarse_moip', path: '../catarse_moip'
   #s.add_dependency 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
 
-  s.add_dependency 'draper', '0.17.0'
+  s.add_dependency 'draper'
 
   # Frontend stuff
   s.add_dependency 'slim'
@@ -47,13 +47,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'initjs'
 
   # Authentication and Authorization
-  s.add_dependency 'omniauth', "~> 1.1.0"
-  s.add_dependency 'omniauth-openid', '~> 1.0.1'
-  s.add_dependency 'omniauth-twitter', '~> 0.0.12'
-  s.add_dependency 'omniauth-facebook', '~> 1.2.0'
-  #s.add_dependency 'omniauth-github', '~> 1.0.1'
-  s.add_dependency 'omniauth-linkedin', '~> 0.0.6'
-  s.add_dependency 'omniauth-yahoo', '~> 0.0.4'
+  s.add_dependency 'omniauth', "~> 1.1.3"
+  s.add_dependency 'omniauth-twitter', '~> 0.0.14'
+  s.add_dependency 'omniauth-facebook', '~> 1.4.0'
   s.add_dependency 'devise', '~> 2.2.3'
   s.add_dependency 'cancan'#, git: 'git://github.com/ryanb/cancan.git', branch: '2.0'
 
@@ -83,12 +79,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'has_scope'
   s.add_dependency 'spectator-validates_email'#, require: 'validates_email'
   s.add_dependency 'has_vimeo_video', '~> 0.0.5'
-  s.add_dependency 'memoist', '~> 0.2.0'
-  s.add_dependency 'wirble'
   s.add_dependency 'weekdays'
-  s.add_dependency 'brcep'
   s.add_dependency "RedCloth"
-  s.add_dependency 'unicode'
   s.add_dependency 'enumerate_it'
   s.add_dependency 'httparty', '~> 0.6.1'
   s.add_dependency "rack-timeout"
@@ -97,13 +89,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'http_accept_language'
   s.add_dependency 'routing-filter' #, :git => 'git://github.com/svenfuchs/routing-filter.git'
 
-  # Administration
-  s.add_dependency "meta_search", "1.1.3"
-
   # Payment
   s.add_dependency 'activemerchant', '1.17.0'#, require: 'active_merchant'
   s.add_dependency 'httpclient', '2.2.5'
-  s.add_dependency 'selenium-webdriver'
 
   # Assests
   s.add_dependency 'sass-rails',   '~> 3.2.5'
@@ -116,9 +104,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'mailcatcher'
   s.add_development_dependency 'launchy'
   s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'rspec-rails', "~> 2.10.0"
+  s.add_development_dependency 'rspec-rails', "~> 2.12"
   s.add_development_dependency 'mocha', '0.10.4'
   s.add_development_dependency 'shoulda'
-  s.add_development_dependency 'factory_girl_rails', '1.7.0'
+  s.add_development_dependency 'factory_girl_rails'
   s.add_development_dependency 'capybara', ">= 1.0.1"
 end
