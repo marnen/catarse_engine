@@ -1,6 +1,10 @@
 module Catarse
 class Adm::BaseController < BaseController
-  before_filter :require_admin
+  inherit_resources
+  before_filter do
+    authorize! :manage, resource_class
+  end
+
   @@menu_items = {}
   cattr_accessor :menu_items
 
@@ -9,6 +13,17 @@ class Adm::BaseController < BaseController
       self.menu_items.merge! menu
     else
       self.menu_items
+    end
+  end
+
+  def update
+    update! do |format|
+      if resource.errors.empty?
+        format.json { respond_with_bip(resource) }
+      else
+        format.html { render action: "edit" }
+        format.json { respond_with_bip(resource) }
+      end
     end
   end
 end

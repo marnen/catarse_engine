@@ -4,7 +4,5 @@ class Reports::BaseController < Catarse::BaseController
   responders :csv
   respond_to :csv
   actions :index
-
-  before_filter :require_login
 end
 end

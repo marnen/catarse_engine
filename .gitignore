@@ -18,3 +18,5 @@ npm-debug.log
 .sass-cache
 */spec/dummy/log/*
 */spec/dummy/db/structure.sql
+Cookbooks
+.vagrant

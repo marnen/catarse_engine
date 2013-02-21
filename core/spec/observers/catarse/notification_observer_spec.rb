@@ -6,7 +6,7 @@ describe Catarse::NotificationObserver do
       ActionMailer::Base.deliveries = []
     end
     it 'When email, subject and text are filled should delivery an email to user' do
-      Factory.create(:notification)
+      FactoryGirl.create(:notification)
       ActionMailer::Base.deliveries.should_not be_empty
     end
   end

@@ -3,7 +3,7 @@ class ExploreController < BaseController
 
   def index
     @title = t('catarse.explore.title')
-    @categories = Category.with_projects.order(:name).all
+    @categories = Category.with_projects.order(:name_pt).all
 
     # Just to know if we should present the menu entries, the actual projects are fetched via AJAX
     @recommended = Project.visible.not_expired.recommended.limit(3)

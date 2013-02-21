@@ -1,10 +1,10 @@
 module Catarse
-class UserDecorator < Draper::Base
+class UserDecorator < Draper::Decorator
   decorates_association :user, :with => :catarse
   include Draper::LazyHelpers
 
   def display_provider
-    case provider
+    case source.provider
     when 'devise' then "Login #{email}"
     when 'google' then I18n.t('catarse.user.google_account')
     else provider
@@ -12,17 +12,11 @@ class UserDecorator < Draper::Base
   end
 
   def display_name
-    if name.present?
-      name
-    elsif full_name.present?
-      full_name
-    else
-      I18n.t('catarse.user.no_name')
-    end
+    source.name || source.full_name || I18n.t('catarse.user.no_name')
   end
 
   def display_image
-    uploaded_image.thumb_avatar.url || image_url || gravatar_url || '/assets/user.png'
+    source.uploaded_image.thumb_avatar.url || source.image_url || source.gravatar_url || '/assets/user.png'
   end
 
   def display_image_html options={:width => 119, :height => 121}
@@ -40,11 +34,11 @@ class UserDecorator < Draper::Base
   end
 
   def display_credits
-    number_to_currency credits, :unit => 'R$', :precision => 0, :delimiter => '.'
+    number_to_currency source.credits, :unit => 'R$', :precision => 0, :delimiter => '.'
   end
 
   def display_total_of_backs
-    number_to_currency backs.confirmed.sum(:value), :unit => 'R$', :precision => 0, :delimiter => '.'
+    number_to_currency source.backs.confirmed.sum(:value), :unit => 'R$', :precision => 0, :delimiter => '.'
   end
 end
 end

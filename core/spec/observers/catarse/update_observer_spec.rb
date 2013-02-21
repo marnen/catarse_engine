@@ -5,7 +5,7 @@ describe Catarse::UpdateObserver do
     context "call notify update worker" do
       before do
         Catarse::NotifyUpdateWorker.jobs.clear
-        @project = Factory(:project)
+        @project = FactoryGirl.create(:project)
       end
 
       it "should send to queue" do
@@ -15,3 +15,4 @@ describe Catarse::UpdateObserver do
     end
   end
 end
+

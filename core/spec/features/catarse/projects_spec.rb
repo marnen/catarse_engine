@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe "Projects" do
-  let(:project){ Factory.build(:project) }
+  let(:project){ FactoryGirl.build(:project) }
 
   before {
     #NOTE: Weird bug on edit project test
@@ -17,8 +17,8 @@ describe "Projects" do
 
   describe "home" do
     before do
-      Factory(:project, state: 'online', online_days: 30)
-      Factory(:project, state: 'online', online_days: -30)
+      FactoryGirl.create(:project, state: 'online', online_days: 30)
+      FactoryGirl.create(:project, state: 'online', online_days: -30)
       visit root_path(:locale => :pt)
     end
 
@@ -30,8 +30,8 @@ describe "Projects" do
 
   describe "explore" do
     before do
-      Factory(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
-      Factory(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
+      FactoryGirl.create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
+      FactoryGirl.create(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
       visit explore_path(:locale => :pt)
       sleep 2
     end
@@ -43,8 +43,8 @@ describe "Projects" do
 
   describe "search" do
     before do
-      Factory(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
-      Factory(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
+      FactoryGirl.create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
+      FactoryGirl.create(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
       visit explore_path(anchor: :search) + '/Lorem'
       sleep 4
     end
@@ -57,8 +57,8 @@ describe "Projects" do
 
   describe "new and create" do
     before do
-      visit fake_login_path
-      @category = Factory(:category)
+      login
+      @category = FactoryGirl.create(:category)
       visit new_project_path(:locale => :pt)
     end
 
@@ -80,10 +80,10 @@ describe "Projects" do
   end
 
   describe "edit" do
-    let(:project) { Factory(:project, online_days: 10, state: 'online', user: current_user) }
+    let(:project) { FactoryGirl.create(:project, online_days: 10, state: 'online', user: current_user) }
 
     before do
-      visit fake_login_path
+      login
       visit project_path(project, :locale => :pt)
     end
 

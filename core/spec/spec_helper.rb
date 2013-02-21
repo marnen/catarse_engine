@@ -13,7 +13,7 @@ Dir[Catarse::Core::Engine.root.join("spec/support/**/*.rb")].each {|f| require f
 
 RSpec.configure do |config|
   config.mock_with :mocha
-  config.include Factory::Syntax::Methods
+  config.include FactoryGirl::Syntax::Methods
   config.include ActionView::Helpers::TextHelper
   config.before(:each, :type => :controller) { @routes = Catarse::Core::Engine.routes }
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Catarse::LogoUploader do
   include CarrierWave::Test::Matchers
-  let(:user){ Factory(:user) }
+  let(:user){ FactoryGirl.create(:user) }
 
   before do
     Catarse::LogoUploader.enable_processing = true

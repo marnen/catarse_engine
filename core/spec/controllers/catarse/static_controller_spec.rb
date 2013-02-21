@@ -19,12 +19,6 @@ describe Catarse::StaticController do
     its(:body){ should =~ /#{I18n.t('catarse.static.faq.title')}/ }
   end
 
-  describe "GET terms" do
-    before{ get :terms, {:locale => :pt} }
-    it{ should be_success }
-    its(:body){ should =~ /#{I18n.t('catarse.static.terms.title')}/ }
-  end
-
   describe "GET sitemap" do
     before{ get :sitemap, {:locale => :pt} }
     it{ should be_success }

@@ -9,6 +9,10 @@ module Catarse
         Rails.application.config.assets.precompile += %w( catarse.js catarse.css )
       end
 
+      config.to_prepare do
+        Devise::Mailer.layout "catarse/email" # email.haml or email.erb
+      end
+
       config.autoload_paths += %W(#{config.root}/lib #{config.root}/lib/** #{config.root}/app/presenters #{config.root}/app/presenters/** #{config.root}/app/business/ #{config.root}/app/business/**)
 
       config.after_initialize do

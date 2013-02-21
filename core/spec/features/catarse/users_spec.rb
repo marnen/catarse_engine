@@ -6,13 +6,13 @@ describe "Users" do
   before do
     #NOTE: Weird bug on edit user test
     RoutingFilter.active = true
-    Factory(:notification_type, name: 'updates')
+    FactoryGirl.create(:notification_type, name: 'updates')
   end
 
   describe "the notification tab" do
     before do
-      visit fake_login_path
-      @project = Factory(:backer, user: current_user).project
+      login
+      @project = FactoryGirl.create(:backer, user: current_user).project
       visit user_path(current_user, locale: :pt)
       click_link 'unsubscribes_link'
     end

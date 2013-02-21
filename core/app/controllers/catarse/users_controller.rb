@@ -3,7 +3,7 @@ module Catarse
 class UsersController < BaseController
   load_and_authorize_resource :user, except: [:projects]
   inherit_resources
-  actions :show, :update, :unsubscribe_update
+  actions :show, :update, :unsubscribe_update, :request_refund
   respond_to :json, :only => [:backs, :projects, :request_refund]
   def show
     show!{
@@ -25,7 +25,7 @@ class UsersController < BaseController
 
   def projects
     @user = User.find(params[:id])
-    @projects = @user.projects.order("updated_at DESC")
+    @projects = @user.projects.includes(:user, :category, :project_total).order("updated_at DESC")
     @projects = @projects.visible unless @user == current_user
     @projects = @projects.page(params[:page]).per(10)
     render :json => @projects
