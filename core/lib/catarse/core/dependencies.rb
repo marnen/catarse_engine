@@ -40,7 +40,6 @@ require 'rails_autolink'
 
 # Uploads
 require 'carrierwave'
-require 'rmagick'
 require 'fog'
 
 # Other Tools

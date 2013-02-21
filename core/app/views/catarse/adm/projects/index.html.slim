@@ -67,7 +67,7 @@
                   td= best_in_place [:adm, project], :goal, method: :put, type: :input, display_as: :display_goal
                   td= "#{project.display_pledged} (#{project.progress}%)"
                   td= project.total_backers
-                  td.checkbox= best_in_place [:adm, project], :recommended, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
+                  td.checkbox= best_in_place [:adm, project], :recommended, method: :put, type: :checkbox, collection: [t('catarse.no'), t('catarse.yes')]
                   td= project.online_date.strftime('%d/%m/%Y') if project.online_date
                   td= project.display_expires_at
                   td

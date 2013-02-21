@@ -444,6 +444,18 @@ en:
       limited: Limited
       sold_out: "Sold out"
     sessions:
+      new:
+        site_title: "Sign in"
+        submit: "Sign in"
+        title: "Sign in using your email"
+        login_title: Login
+        login_subtitle: "If already have an account"
+        register_title: "Sign Up"
+        register_subtitle: "Use your e-mail account"
+        with_facebook: "Sign in with your facebook account"
+        with_facebook_subtitle: "A quick way to access"
+        with_another_social: "Don't have facebook account?"
+        with_another_social_subtitle: "Sign in with another social network"
       auth:
         success: "Successfully logged in. Welcome, %{name}!"
       destroy:
