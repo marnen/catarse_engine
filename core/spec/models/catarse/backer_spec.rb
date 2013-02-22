@@ -78,7 +78,7 @@ describe Catarse::Backer do
   end
 
   describe '.in_time_to_confirm' do
-    subject { Backer.in_time_to_confirm}
+    subject { Catarse::Backer.in_time_to_confirm}
 
     context "when backer is in time to confirm" do
       before { FactoryGirl.create(:backer, created_at: 3.days.ago) }
