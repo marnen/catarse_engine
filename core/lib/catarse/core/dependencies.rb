@@ -22,7 +22,6 @@ require 'draper'
 # Frontend stuff
 require 'jquery-rails'
 
-
 require 'devise'
 require 'cancan'
 
@@ -51,15 +50,11 @@ require 'has_scope'
 require 'validates_email'
 require 'has_vimeo_video'
 require 'weekdays'
-require 'unicode'
 require "rack-timeout"
 
 # Translations
 require 'http_accept_language'
 require 'routing-filter'
-
-# Administration
-require "meta_search"
 
 # Payment
 require 'active_merchant'
@@ -72,11 +67,7 @@ require 'ninesixty'
 
 
 # NOT NECESSARY, I THING
-#require 'memoist'
-#require 'wirble'
-#require 'brcep'
 #require "RedCloth"
-#require 'selenium-webdriver'
 #require 'enumerate_it'
 #require 'httparty'
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Statistics do
+describe Catarse::Statistics do
   before do
     FactoryGirl.create(:project, state: 'successful')
     FactoryGirl.create(:project, state: 'draft')
