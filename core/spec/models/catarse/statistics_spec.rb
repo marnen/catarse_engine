@@ -11,7 +11,7 @@ describe Statistics do
 
   describe "#total_users" do
     subject{ Catarse::Statistics.first.total_users }
-    it{ should == Catarse::User.primary.count }
+    it{ should == Catarse::User.count }
   end
 
   describe "#total_backs" do

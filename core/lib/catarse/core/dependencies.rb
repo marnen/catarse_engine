@@ -9,6 +9,7 @@ require 'state_machine/core'
 require 'pg_search'
 require 'postgres-copy'
 require 'schema_plus'
+require 'schema_associations'
 
 #require 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git', ref: '4fd17e269395ee4b3a32528ace0bcb7eec57a953'
 #require 'catarse_paypal_express', path: '../catarse_paypal_express'

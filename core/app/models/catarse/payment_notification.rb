@@ -1,6 +1,6 @@
 module Catarse
 class PaymentNotification < ActiveRecord::Base
-  belongs_to :backer
+  schema_associations
   serialize :extra_data, JSON
 end
 end

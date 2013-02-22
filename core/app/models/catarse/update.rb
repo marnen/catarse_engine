@@ -2,8 +2,7 @@ module Catarse
 class Update < ActiveRecord::Base
   extend CatarseAutoHtml
 
-  belongs_to :user
-  belongs_to :project
+  schema_associations
   has_many :notifications, dependent: :destroy
   validates_presence_of :user_id, :project_id, :comment, :comment_html
 

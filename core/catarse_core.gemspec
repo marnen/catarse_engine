@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'pg_search'
   s.add_dependency 'postgres-copy'
   s.add_dependency 'schema_plus'
+	s.add_dependency 'schema_associations'
 
   #s.add_dependency 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git', ref: '4fd17e269395ee4b3a32528ace0bcb7eec57a953'
   #s.add_dependency 'catarse_paypal_express', path: '../catarse_paypal_express'
