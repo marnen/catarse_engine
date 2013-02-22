@@ -1,3 +1,4 @@
+module Catarse
 module CatarseAutoHtml
   def catarse_auto_html_for options={}
     self.auto_html_for options[:field] do
@@ -13,4 +14,5 @@ module CatarseAutoHtml
       link :target => :_blank
     end
   end
+end
 end

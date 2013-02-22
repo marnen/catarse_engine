@@ -92,13 +92,6 @@ FactoryGirl.define do
     f.value 'Bar'
   end
 
-  factory :institutional_video, :class => Catarse::InstitutionalVideo do |f|
-    f.title "My title"
-    f.description "Some Description"
-    f.video_url "http://vimeo.com/35492726"
-    f.visible false
-  end
-
   factory :update, :class => Catarse::Update do |f|
     f.association :project, :factory => :project
     f.association :user, :factory => :user
