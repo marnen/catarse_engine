@@ -71,7 +71,7 @@ describe Catarse::Projects::BackersController do
     let(:online){ true }
     before do
       Catarse::Configuration[:secure_review_host] = secure_review_host
-      Catarse::Project.any_instance.stubs(:can_back?).returns(can_back)
+      Catarse::Project.any_instance.stubs(:online?).returns(online)
       get :new, {locale: :pt, project_id: project.id}
     end
 
@@ -124,7 +124,7 @@ describe Catarse::Projects::BackersController do
     context "when backer is logged in" do
       let(:user){ backer.user }
       it{ should be_successful }
-      its(:body){ should =~ /#{I18n.t('catarse.projects.backers.thank_you.title')}/ }
+      its(:body){ should =~ /#{I18n.t('catarse.projects.backers.show.title')}/ }
     end
   end
 
