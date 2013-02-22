@@ -51,7 +51,6 @@ describe Catarse::OmniauthCallbacksController do
   }
 
   subject{ response }
->>>>>>> 9661933275c8518dff2a4fafd8c527d12cdb2894:spec/controllers/omniauth_callbacks_controller_spec.rb
   describe "GET facebook" do
 
     before do
