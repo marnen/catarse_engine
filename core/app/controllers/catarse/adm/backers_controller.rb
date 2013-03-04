@@ -16,6 +16,12 @@ class Adm::BackersController < Catarse::Adm::BaseController
     redirect_to adm_backers_path
   end
 
+  def change_reward
+    resource.change_reward! params[:reward_id]
+    flash[:notice] = I18n.t('adm.backers.messages.successful.change_reward')
+    redirect_to adm_backers_path
+  end
+
   protected
   def set_title
     @title = t("catarse.adm.backers.index.title")

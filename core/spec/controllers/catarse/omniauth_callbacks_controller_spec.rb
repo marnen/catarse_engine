@@ -9,7 +9,7 @@ describe Catarse::OmniauthCallbacksController do
   let(:user){ FactoryGirl.create(:user, authorizations: [ FactoryGirl.create(:authorization, uid: oauth_data[:uid], oauth_provider: facebook_provider ) ]) }
   let(:facebook_provider){ FactoryGirl.create :oauth_provider, name: 'facebook' }
   let(:oauth_data){
-    {
+    Hashie::Mash.new({
       credentials: {
         expires: true,
         expires_at: 1366644101,
@@ -47,7 +47,7 @@ describe Catarse::OmniauthCallbacksController do
       },
       provider: "facebook",
       uid: "547955110"
-    }
+    })
   }
 
   subject{ response }
@@ -60,9 +60,40 @@ describe Catarse::OmniauthCallbacksController do
       get :facebook
     end
 
-    context "when there is no such user" do
+    context "when there is no such user and we do not have an email address" do
+      let(:oauth_data){
+        Hashie::Mash.new({
+          info: {
+            image: "http://graph.facebook.com/547955110/picture?type:, square",
+            name: "Diogo, Biazus",
+            nickname: "diogo.biazus",
+            urls: {
+              Facebook: "http://www.facebook.com/diogo.biazus"
+            },
+            verified: true
+          },
+          provider: "facebook",
+          uid: "547955110"
+        })
+      }
+
       let(:user){ nil }
-      it{ should redirect_to new_user_registration_url }
+      describe "assigned user" do
+        subject{ assigns(:user) }
+        its(:email){ should be_nil }
+        its(:name){ should == "Diogo, Biazus" }
+      end
+      it{ should render_template 'users/set_email' }
+    end
+
+    context "when there is no such user but we retrieve the email from omniauth" do
+      let(:user){ nil }
+      describe "assigned user" do
+        subject{ assigns(:user) }
+        its(:email){ should == "diogob@gmail.com" }
+        its(:name){ should == "Diogo, Biazus" }
+      end
+      it{ should redirect_to root_path }
     end
 
     context "when there is a valid user with this provider and uid and session return_to is /foo" do

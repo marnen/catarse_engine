@@ -61,10 +61,14 @@ Catarse::Core::Engine.routes.draw do
   resources :users do
     resources :backers, :only => [:index]
     resources :unsubscribes, :only => [:create]
+    collection do
+      get 'set_email'
+    end
     member do
       get 'projects'
       get 'credits'
       put 'unsubscribe_update'
+      put 'update_email'
     end
   end
   match "/users/:id/request_refund/:back_id" => 'users#request_refund'
@@ -91,6 +95,7 @@ Catarse::Core::Engine.routes.draw do
       member do
         put 'confirm'
         put 'unconfirm'
+        put 'change_reward'
       end
     end
     resources :users, only: [ :index ]

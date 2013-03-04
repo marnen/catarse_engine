@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
     :address_zip_code,
     :phone_number,
     :cpf,
+    :state_inscription,
     :locale,
     :twitter,
     :facebook_link,
@@ -48,7 +49,6 @@ class User < ActiveRecord::Base
   include Catarse::Core::Engine.routes.url_helpers
   mount_uploader :uploaded_image, LogoUploader
 
-  validates_presence_of :provider, :uid
   validates_uniqueness_of :uid, :scope => :provider
   validates_length_of :bio, :maximum => 140
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   has_many :backs, class_name: "Backer"
   has_one :user_total
 
-  accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?" 
+  accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   scope :who_backed_project, ->(project_id){ where("id IN (SELECT user_id FROM backers WHERE confirmed AND project_id = ?)", project_id) }
   scope :subscribed_to_updates, where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id IS NULL AND notification_type_id = (SELECT id from notification_types WHERE name = 'updates'))")
@@ -114,14 +114,12 @@ class User < ActiveRecord::Base
   end
 
   def self.create_with_omniauth(auth)
-    create! do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
+    u = create! do |user|
       user.name = auth["info"]["name"]
-      user.email = auth["info"]["email"]
-      user.email = auth["extra"]["user_hash"]["email"] if user.email.nil? rescue nil
+      user.email = (auth["info"]["email"] rescue nil)
+      user.email = (auth["extra"]["user_hash"]["email"] rescue nil) unless user.email
       user.nickname = auth["info"]["nickname"]
-      user.bio = auth["info"]["description"][0..139] if auth["info"]["description"]
+      user.bio = (auth["info"]["description"][0..139] rescue nil)
       user.locale = I18n.locale.to_s
 
       if auth["provider"] == "twitter"
@@ -132,6 +130,9 @@ class User < ActiveRecord::Base
         user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
       end
     end
+    provider = OauthProvider.where(name: auth['provider']).first
+    u.authorizations.create! uid: auth['uid'], oauth_provider_id: provider.id if provider
+    u
   end
 
   def recommended_project

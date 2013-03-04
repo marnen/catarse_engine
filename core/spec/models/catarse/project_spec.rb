@@ -152,8 +152,8 @@ describe Catarse::Project do
 
   describe ".recent" do
     before do
-      @p = FactoryGirl.create(:project, :created_at => (Date.today - 14.days))
-      FactoryGirl.create(:project, :created_at => (Date.today - 15.days))
+      @p = FactoryGirl.create(:project, :created_at => (Time.now - 14.days))
+      FactoryGirl.create(:project, :created_at => (Time.now - 15.days))
     end
     subject{ Catarse::Project.recent }
     it{ should == [@p] }
@@ -214,6 +214,36 @@ describe Catarse::Project do
     end
   end
 
+  describe "#progress" do
+    subject{ project.progress }
+    let(:pledged){ 0.0 }
+    let(:goal){ 0.0 }
+    before do
+        project.stubs(:pledged).returns(pledged)
+        project.stubs(:goal).returns(goal)
+    end
+
+    context "when goal == pledged > 0" do
+      let(:goal){ 10.0 }
+      let(:pledged){ 10.0 }
+      it{ should == 100 }
+    end
+
+    context "when goal is > 0 and pledged is 0.0" do
+      let(:goal){ 10.0 }
+      it{ should == 0 }
+    end
+
+    context "when goal is 0.0 and pledged > 0.0" do
+      let(:pledged){ 10.0 }
+      it{ should == 100 }
+    end
+
+    context "when goal is 0.0 and pledged is 0.0" do
+      it{ should == 0 }
+    end
+  end
+
   describe "#pledged" do
     subject{ project.pledged }
     context "when project_total is nil" do
@@ -251,16 +281,10 @@ describe Catarse::Project do
   end
 
   describe "#vimeo" do
-    def build_with_video url
-      FactoryGirl.build(:project, :video_url => url)
-    end
+    subject{ FactoryGirl.create(:project, video_url: "http://vimeo.com/17298435").vimeo }
 
-    subject{ build_with_video("http://vimeo.com/17298435") }
-
-    its(:vimeo) do
-      subject.id.should == "17298435"
-      subject.embed_url.should == "http://player.vimeo.com/video/17298435"
-    end
+    its(:id){ should == "17298435" }
+    its(:embed_url){ should == "http://player.vimeo.com/video/17298435" }
   end
 
 
