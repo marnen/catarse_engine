@@ -22,13 +22,13 @@ describe Catarse::Notification do
     let(:deliver_exception){ nil }
     let(:notification){ FactoryGirl.create(:notification, dismissed: false, notification_type: notification_type) }
 
-    before do 
+    before do
       deliver_exception
       notification.send_email
     end
 
     context "when deliver raises and exception" do
-      let(:deliver_exception){ NotificationsMailer.stubs(:notify).raises(Exception, 'fake error') }
+      let(:deliver_exception){ Catarse::NotificationsMailer.stubs(:notify).raises(Exception, 'fake error') }
       it("should not dismiss the notification"){ notification.dismissed.should be_false }
     end
 

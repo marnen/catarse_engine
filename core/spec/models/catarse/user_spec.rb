@@ -154,7 +154,7 @@ describe Catarse::User do
         }
       }
     end
-    let(:created_user){ User.create_with_omniauth(auth) }
+    let(:created_user){ Catarse::User.create_with_omniauth(auth) }
     let(:oauth_provider){ Catarse::OauthProvider.create! name: 'twitter', key: 'dummy_key', secret: 'dummy_secret' }
     before{ oauth_provider }
     subject{ created_user }

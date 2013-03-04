@@ -52,7 +52,7 @@ describe Catarse::UserDecorator do
 
     context "when we have an email" do
       let(:user){ FactoryGirl.create(:user, :image_url => nil, :email => 'diogob@gmail.com') }
-      it{ should == "https://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=#{::Configuration[:base_url]}/assets/user.png" }
+      it{ should == "https://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=#{Catarse::Configuration[:base_url]}/assets/user.png" }
     end
 
     context "when we do not have an image nor an email" do
