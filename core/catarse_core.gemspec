@@ -74,7 +74,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'fog'
 
   # Other Tools
-  s.add_dependency 'feedzirra'
+  s.add_dependency 'feedzirra', '~> 0.6.0'
   s.add_dependency 'validation_reflection'#, git: 'git://github.com/ncri/validation_reflection.git'
   s.add_dependency 'inherited_resources', '1.3.1'
   s.add_dependency 'has_scope'
