@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/devton/catarse_mailchimp
-  revision: a5be917969a1df6010fbbdea25a5c1407c6f8659
+  remote: git://github.com/catarse/catarse_mailchimp
+  revision: 2ed4f3931dfa292e5c1c62619772f04e41c68629
   specs:
     catarse_mailchimp (0.0.1)
       mailchimp
@@ -74,7 +74,7 @@ PATH
       weekdays
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     RedCloth (4.2.9)
     actionmailer (3.2.12)
@@ -260,7 +260,7 @@ GEM
       skinny (~> 0.2.3)
       sqlite3 (~> 1.3)
       thin (~> 1.5.0)
-    mailchimp (0.0.8)
+    mailchimp (0.0.9)
       httparty
     metaclass (0.0.1)
     mime-types (1.21)

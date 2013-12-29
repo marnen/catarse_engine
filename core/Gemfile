@@ -7,7 +7,7 @@ source 'https://rubygems.org'
 #gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
 
 gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0'
-gem 'catarse_mailchimp', git: 'git://github.com/devton/catarse_mailchimp'
+gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp'
 gem 'validation_reflection', git: 'git://github.com/ncri/validation_reflection.git'
 
 
