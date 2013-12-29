@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
 #gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git', ref: '4fd17e269395ee4b3a32528ace0bcb7eec57a953'
 #gem 'catarse_paypal_express', path: '../catarse_paypal_express'
@@ -7,7 +7,7 @@ source :rubygems
 #gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
 
 gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0'
-gem 'catarse_mailchimp', git: 'git://github.com/devton/catarse_mailchimp'
+gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp'
 gem 'validation_reflection', git: 'git://github.com/ncri/validation_reflection.git'
 
 

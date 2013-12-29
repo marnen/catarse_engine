@@ -1,0 +1,4 @@
+.rvmrc
+.ruby-version
+Gemfile.lock
+tmp

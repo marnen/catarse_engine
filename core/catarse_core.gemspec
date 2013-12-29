@@ -106,6 +106,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'launchy'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'rspec-rails', "~> 2.12"
+  s.add_development_dependency 'guard-rspec'
   s.add_development_dependency 'mocha', '0.10.4'
   s.add_development_dependency 'shoulda'
   s.add_development_dependency 'factory_girl_rails'

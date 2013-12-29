@@ -1,4 +1,6 @@
 .bundle
+.rvmrc
+.ruby-version
 log/*.log
 tmp/**/*
 */spec/dummy/tmp/**/*
